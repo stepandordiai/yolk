@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import img1 from "/starters-01.jpg";
 import img2 from "/starters-02.jpg";
 import img3 from "/starters-03.jpg";
@@ -18,6 +18,9 @@ import "./Menu.scss";
 const Menu = () => {
 	return (
 		<>
+			<Helmet>
+				<title>Menu / Yolk</title>
+			</Helmet>
 			<div className="menu">
 				<nav className="menu__nav">
 					<a href="#starters">Starters</a>
