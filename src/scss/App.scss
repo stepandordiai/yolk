@@ -2,7 +2,7 @@
 @use "fonts";
 
 html {
-	scroll-behavior: smooth;
+	scroll-behavior: smooth !important;
 	overscroll-behavior: none;
 }
 

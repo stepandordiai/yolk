@@ -5,10 +5,11 @@
 }
 
 .menu__nav {
-	background: rgba(0, 0, 0, 0.637);
+	background: rgba(0, 0, 0, 0.5);
 	backdrop-filter: blur(10px);
 	padding: 10px;
-	max-width: 100%;
+	// TODO:
+	max-width: calc(100% - 20px);
 	align-self: center;
 	display: flex;
 	justify-content: flex-start;
@@ -26,22 +27,23 @@
 		padding: 5px;
 		border-radius: 15px;
 	}
+}
 
-	a:nth-child(1) {
-		background: #c1af0f;
-	}
+.menu__nav-link--active {
+	background: #c1af0f;
 }
 
 .menu__inner {
 	width: 50%;
 	padding: 0 10px;
-	margin-bottom: 40px;
+	margin-bottom: 100px;
 }
 
 .menu__inner-title {
 	font-family: "Dark Blow", sans-serif;
 	font-size: 3rem;
 	margin-bottom: 20px;
+	scroll-margin-top: 100px;
 }
 
 .menu__item {
@@ -57,7 +59,7 @@
 	border-radius: 10px;
 
 	&::before {
-		content: "Meal of the day";
+		content: attr(data-special-value);
 		position: absolute;
 		top: 0;
 		right: 0;
@@ -72,7 +74,7 @@
 	height: 72px;
 	width: 110px;
 	overflow: hidden;
-	border-radius: 10px;
+	border-radius: 5px;
 	flex-shrink: 0;
 
 	img {
