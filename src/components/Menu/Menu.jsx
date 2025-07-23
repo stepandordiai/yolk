@@ -29,7 +29,7 @@ const Menu = () => {
 					<p className="menu__inner-title" id="starters">
 						Starters
 					</p>
-					<div className="menu__item">
+					<div className="menu__item menu__item-special">
 						<div className="menu__item-img-wrapper">
 							<img src={img1} alt="" />
 						</div>

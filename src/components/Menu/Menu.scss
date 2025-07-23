@@ -14,6 +14,7 @@
 	justify-content: flex-start;
 	position: sticky;
 	top: 10px;
+	z-index: 100;
 	display: flex;
 	column-gap: 10px;
 	border-radius: 25px;
@@ -44,7 +45,25 @@
 .menu__item {
 	display: flex;
 	gap: 10px;
+	padding: 10px;
 	margin-bottom: 20px;
+}
+
+.menu__item-special {
+	position: relative;
+	border: 1px solid #c1af0f;
+	border-radius: 10px;
+
+	&::before {
+		content: "Meal of the day";
+		position: absolute;
+		top: 0;
+		right: 0;
+		background: #c1af0f;
+		padding: 5px;
+		border-radius: 5px;
+		transform: translate(-10px, -50%);
+	}
 }
 
 .menu__item-img-wrapper {
