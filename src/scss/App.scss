@@ -1,0 +1,13 @@
+@use "reset";
+@use "fonts";
+
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	font-family: "Glacial Indifference", sans-serif;
+	background: #000;
+	color: #fff;
+	height: 2000px;
+}

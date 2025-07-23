@@ -1,0 +1,12 @@
+@use "./../../scss/mixins" as *;
+
+.home {
+	min-height: 100svh;
+	@include flex-center;
+	text-align: center;
+	font-size: 3rem;
+
+	span {
+		font-family: "Dark Blow", sans-serif;
+	}
+}
