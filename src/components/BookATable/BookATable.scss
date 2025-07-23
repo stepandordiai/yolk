@@ -1,0 +1,46 @@
+.book-a-table {
+	display: none;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 50%;
+	height: calc(100% - 20px);
+	border-radius: 10px;
+	z-index: 101;
+	background: #fff;
+	color: #000;
+	padding: 20px;
+}
+
+.book-a-table--active {
+	display: initial;
+}
+
+.book-a-table__title {
+	font-size: 3rem;
+	margin-bottom: 40px;
+}
+
+.input-container {
+	position: relative;
+	width: 100%;
+	margin-bottom: 20px;
+}
+
+label {
+	position: absolute;
+	top: 0;
+	left: 10px;
+	background-color: #fff;
+	padding: 0 5px;
+	transform: translateY(-50%);
+}
+
+input,
+textarea {
+	border: 1px solid rgba(0, 0, 0, 0.25);
+	border-radius: 10px;
+	padding: 10px;
+	width: 100%;
+}
