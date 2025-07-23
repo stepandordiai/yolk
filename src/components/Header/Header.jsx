@@ -1,15 +1,37 @@
 import { NavLink } from "react-router-dom";
 import logo from "/logo-black.png";
 import "./Header.scss";
+import { useEffect } from "react";
 
 const Header = () => {
+	useEffect(() => {
+		const header = document.querySelector(".header");
+
+		let prevScroll = 0;
+		const handleHeaderOnScroll = () => {
+			const scroll = document.documentElement.scrollTop;
+			if (scroll > prevScroll) {
+				header.classList.add("header--active");
+			} else {
+				header.classList.remove("header--active");
+			}
+			prevScroll = scroll;
+		};
+
+		document.addEventListener("scroll", handleHeaderOnScroll);
+
+		return () => {
+			document.removeEventListener("scroll", handleHeaderOnScroll);
+		};
+	}, []);
+
 	return (
 		<>
 			<div className="header">
 				<NavLink className="header__logo" to="/">
-					Y
+					<span>Y</span>
 					<img src={logo} width={20} alt="" />
-					lk
+					<span>lk</span>
 				</NavLink>
 				<nav className="header__nav">
 					<a href="">About</a>
