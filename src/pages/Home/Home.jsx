@@ -1,4 +1,3 @@
-import Menu from "../../components/Menu/Menu";
 import "./Home.scss";
 
 const Home = () => {
@@ -12,7 +11,6 @@ const Home = () => {
 						Thailand
 					</h1>
 				</div>
-				<Menu />
 			</main>
 		</>
 	);

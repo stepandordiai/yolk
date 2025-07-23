@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import img1 from "/starters-01.jpg";
 import img2 from "/starters-02.jpg";
 import img3 from "/starters-03.jpg";
