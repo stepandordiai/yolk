@@ -5,6 +5,10 @@ html {
 	scroll-behavior: smooth;
 }
 
+::-webkit-scrollbar {
+	display: none;
+}
+
 body {
 	font-family: "Glacial Indifference", sans-serif;
 	background: #000;

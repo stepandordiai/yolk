@@ -1,0 +1,91 @@
+.menu {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.menu__nav {
+	background: rgba(0, 0, 0, 0.637);
+	backdrop-filter: blur(10px);
+	padding: 10px;
+	max-width: 100%;
+	align-self: center;
+	display: flex;
+	justify-content: flex-start;
+	position: sticky;
+	top: 10px;
+	display: flex;
+	column-gap: 10px;
+	border-radius: 25px;
+	overflow-x: scroll;
+
+	a {
+		color: #fff;
+		padding: 5px;
+		border-radius: 15px;
+	}
+
+	a:nth-child(1) {
+		background: #c1af0f;
+	}
+}
+
+.menu__inner {
+	width: 50%;
+	padding: 0 10px;
+}
+
+.menu__inner-title {
+	font-family: "Dark Blow", sans-serif;
+	font-size: 3rem;
+	margin-bottom: 20px;
+}
+
+.menu__item {
+	display: flex;
+	gap: 10px;
+	margin-bottom: 20px;
+}
+
+.menu__item-img-wrapper {
+	height: 72px;
+	width: 110px;
+	overflow: hidden;
+	border-radius: 10px;
+	flex-shrink: 0;
+
+	img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		object-position: center;
+	}
+}
+
+.menu__item-info {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	flex-grow: 1;
+}
+
+.menu__item-info-top {
+	display: flex;
+	justify-content: space-between;
+}
+
+.menu__item-info-bottom {
+	color: hsl(0, 0%, 50%);
+}
+
+@media screen and (width < 896px) {
+	.menu__inner {
+		width: 75%;
+	}
+}
+
+@media screen and (width < 600px) {
+	.menu__inner {
+		width: 100%;
+	}
+}

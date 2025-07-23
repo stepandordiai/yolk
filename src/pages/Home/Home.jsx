@@ -1,14 +1,18 @@
+import Menu from "../../components/Menu/Menu";
 import "./Home.scss";
 
 const Home = () => {
 	return (
 		<>
 			<main className="home">
-				<h1>
-					<span>The pure taste of</span>
-					<br />
-					Thailand
-				</h1>
+				<div className="home__top">
+					<h1>
+						<span>The pure taste of</span>
+						<br />
+						Thailand
+					</h1>
+				</div>
+				<Menu />
 			</main>
 		</>
 	);
