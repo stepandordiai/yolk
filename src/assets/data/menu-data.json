@@ -1,0 +1,101 @@
+[
+	{
+		"id": 1,
+		"name": "Tomato Soup",
+		"priceCents": 490,
+		"img": "/starters-01.jpg",
+		"type": "starters"
+	},
+	{
+		"id": 2,
+		"name": "Noodle Soup",
+		"priceCents": 550,
+		"img": "/starters-02.jpg",
+		"type": "starters",
+		"special": "Starter of the Day"
+	},
+	{
+		"id": 3,
+		"name": "Pumpkin Soup",
+		"priceCents": 690,
+		"img": "/starters-03.jpg",
+		"type": "starters"
+	},
+	{
+		"id": 4,
+		"name": "Delicious Pancakes",
+		"priceCents": 890,
+		"img": "/breakfast-01.jpg",
+		"type": "breakfast"
+	},
+	{
+		"id": 5,
+		"name": "Sweet Heaven",
+		"priceCents": 990,
+		"img": "/breakfast-02.jpg",
+		"type": "breakfast"
+	},
+	{
+		"id": 6,
+		"name": "Oatmeal Spirit",
+		"priceCents": 990,
+		"img": "/breakfast-03.jpg",
+		"type": "breakfast"
+	},
+	{
+		"id": 7,
+		"name": "Avocado Smash",
+		"priceCents": 790,
+		"img": "/breakfast-04.jpg",
+		"type": "breakfast"
+	},
+	{
+		"id": 8,
+		"name": "Italian Pizza",
+		"priceCents": 1290,
+		"img": "/dinner-01.jpg",
+		"type": "dinner"
+	},
+	{
+		"id": 9,
+		"name": "Vegan Burger",
+		"priceCents": 1390,
+		"img": "/dinner-02.jpg",
+		"type": "dinner"
+	},
+	{
+		"id": 10,
+		"name": "Sea Curry",
+		"priceCents": 990,
+		"img": "/dinner-03.jpg",
+		"type": "dinner"
+	},
+	{
+		"id": 11,
+		"name": "Noodle Bowl",
+		"priceCents": 990,
+		"img": "/dinner-04.jpg",
+		"type": "dinner"
+	},
+	{
+		"id": 12,
+		"name": "Panthouse Tonic",
+		"priceCents": 990,
+		"img": "/drinks-01.jpg",
+		"type": "drinks"
+	},
+	{
+		"id": 13,
+		"name": "Apple Breeze",
+		"priceCents": 990,
+		"img": "/drinks-02.jpg",
+		"type": "drinks"
+	},
+	{
+		"id": 14,
+		"name": "Frenchman Blitz",
+		"priceCents": 990,
+		"img": "/drinks-03.jpg",
+		"type": "drinks"
+	}
+]
