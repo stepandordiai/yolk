@@ -25,6 +25,10 @@ const Header = () => {
 		};
 	}, []);
 
+	const openBookATable = () => {
+		document.querySelector(".book-a-table").style.display = "flex";
+	};
+
 	return (
 		<>
 			<div className="header">
@@ -38,7 +42,9 @@ const Header = () => {
 					<NavLink to="/menu">Menu</NavLink>
 					<a href="">Contact</a>
 				</nav>
-				<button className="header__btn">Book a table</button>
+				<button onClick={openBookATable} className="header__btn">
+					Book a table
+				</button>
 			</div>
 		</>
 	);

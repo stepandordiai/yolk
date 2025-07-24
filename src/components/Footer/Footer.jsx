@@ -3,6 +3,10 @@ import "./Footer.scss";
 import logoWhite from "/logo.png";
 
 const Footer = () => {
+	const openBookATable = () => {
+		document.querySelector(".book-a-table").style.display = "flex";
+	};
+
 	return (
 		<footer className="footer">
 			<div className="footer__container">
@@ -35,7 +39,9 @@ const Footer = () => {
 					</nav>
 				</div>
 				<div>
-					<button>Book a Table</button>
+					<button onClick={openBookATable} className="footer__btn">
+						Book a Table
+					</button>
 				</div>
 			</div>
 			<div className="footer__bottom">
