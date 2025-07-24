@@ -1,0 +1,62 @@
+.preload {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 102;
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+	padding-bottom: 70px;
+	background: #000;
+	animation: animatePreload 1s 3s forwards ease-in;
+	animation-timing-function: cubic-bezier(0.75, 0.1, 0.25, 1);
+}
+
+@keyframes animatePreload {
+	to {
+		transform: translateY(-100%);
+	}
+}
+
+.preload__wrapper {
+	overflow: hidden;
+	height: max-content;
+}
+
+.preload__title {
+	color: #fff;
+	font-size: 6rem;
+	line-height: 80px;
+	animation: animatePreload 1s 2.5s forwards ease-in;
+	animation-timing-function: cubic-bezier(0.75, 0.1, 0.25, 1);
+
+	img {
+		animation: animateEgg 2s 0.5s forwards ease-in-out;
+	}
+}
+
+@keyframes animatePreloadTitle {
+	to {
+		transform: translateY(-100%);
+	}
+}
+
+@keyframes animateEgg {
+	50% {
+		transform: rotate(115deg);
+	}
+
+	70% {
+		transform: rotate(80deg);
+	}
+
+	90% {
+		transform: rotate(95deg);
+	}
+
+	100% {
+		transform: rotate(90deg);
+	}
+}
