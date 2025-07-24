@@ -375,7 +375,6 @@ const Menu = () => {
 						</div>
 					</div>
 				</div>
-				<div style={{ height: 1000 }}></div>
 			</div>
 		</>
 	);

@@ -1,8 +1,5 @@
 @use "./../../scss/mixins" as *;
 
-.home {
-}
-
 .home__top {
 	min-height: 100svh;
 	@include flex-center;
@@ -11,8 +8,4 @@
 	background-image: url("/pexels-fotios-photos-776538.jpg");
 	background-repeat: no-repeat;
 	background-size: cover;
-
-	span {
-		font-family: "Dark Blow", sans-serif;
-	}
 }
