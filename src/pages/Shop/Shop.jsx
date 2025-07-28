@@ -11,7 +11,10 @@ const Shop = () => {
 				<div className="">
 					{giftCardsData.map((giftCard) => {
 						return (
-							<NavLink className="gift-card__container" to="/gift-card-page">
+							<NavLink
+								className="gift-card__container"
+								to={`/gift-card-page/${giftCard.id}`}
+							>
 								<div>
 									<img src={giftCard.img} alt="" />
 								</div>

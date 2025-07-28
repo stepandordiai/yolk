@@ -5,7 +5,7 @@ import workingHoursIcon from "/icons/working-hours.png";
 import shoppingCartIcon from "/icons/shopping-cart.png";
 import "./Header.scss";
 
-const Header = () => {
+const Header = ({ cart }) => {
 	useEffect(() => {
 		const header = document.querySelector(".header");
 
@@ -52,6 +52,7 @@ const Header = () => {
 				</div>
 				<button className="header__cart">
 					<img src={shoppingCartIcon} width={20} alt="" />
+					{cart.length > 0 && <span>{cart.length}</span>}
 				</button>
 				<button onClick={openBookATable} className="header__btn">
 					Book a table

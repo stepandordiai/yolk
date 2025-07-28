@@ -6,19 +6,28 @@ import BookATable from "./components/BookATable/BookATable";
 import Footer from "./components/Footer/Footer";
 import ScrollToTop from "./utils/ScrollToTop";
 import Preload from "./components/Preload/Preload";
-import "./scss/App.scss";
 import Shop from "./pages/Shop/Shop";
+import GiftCardPage from "./pages/GiftCardPage/GiftCardPage";
+import { useState } from "react";
+import "./scss/App.scss";
 
 function App() {
+	const [cart, setCart] = useState([]);
+
 	return (
 		<>
 			<Preload />
-			<Header />
+			<Header cart={cart} />
 			<BookATable />
 			<Routes>
 				<Route path="/" element={<Home />} />
 				<Route path="/menu" element={<Menu />} />
 				<Route path="/shop" element={<Shop />} />
+				<Route path="/shop" element={<Shop />} />
+				<Route
+					path="/gift-card-page/:id"
+					element={<GiftCardPage setCart={setCart} />}
+				/>
 			</Routes>
 			<Footer />
 			<ScrollToTop />
