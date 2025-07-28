@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 import "./Footer.scss";
-import logoWhite from "/logo.png";
+import logoWhite from "/logo-white.png";
 
 const Footer = () => {
 	const openBookATable = () => {

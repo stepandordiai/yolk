@@ -1,0 +1,9 @@
+@use "./../../scss/mixins" as *;
+
+.page-top {
+	height: 50svh;
+	width: 100%;
+	background: red;
+	@include flex-center;
+	flex-direction: column;
+}

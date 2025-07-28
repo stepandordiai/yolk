@@ -1,5 +1,5 @@
 import "./Preload.scss";
-import logoWhite from "/logo.png";
+import logoWhite from "/logo-white.png";
 
 const Preload = () => {
 	return (

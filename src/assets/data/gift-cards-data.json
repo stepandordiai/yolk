@@ -1,0 +1,22 @@
+[
+	{
+		"id": 1,
+		"name": "Gift Card Standard",
+		"priceCents": "3000",
+		"img": "https://cdn.prod.website-files.com/6321d0d284b5b793a257fad7/6325e0c0fed41fc9e8eba3d5_product-gift-card-standard-thumbnail-p-500.webp"
+	},
+	{
+		"id": 2,
+		"name": "Gift Card Premium",
+		"priceCents": "5000",
+		"type": "premium",
+		"img": "https://cdn.prod.website-files.com/6321d0d284b5b793a257fad7/6325e07e7e7563bf1db00af2_product-gift-card-premium-thumbnail-p-500.webp"
+	},
+	{
+		"id": 1,
+		"name": "Gift Card Gold",
+		"priceCents": "10000",
+		"type": "gold",
+		"img": "https://cdn.prod.website-files.com/6321d0d284b5b793a257fad7/6325e0913009595d2623f575_product-gift-card-gold-thumbnail-p-500.webp"
+	}
+]

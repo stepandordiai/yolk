@@ -2,6 +2,7 @@ import { Helmet } from "react-helmet-async";
 import { useEffect } from "react";
 import menuData from "./../../assets/data/menu-data.json";
 import "./Menu.scss";
+import PageTop from "../../components/PageTop/PageTop";
 
 const Menu = () => {
 	useEffect(() => {
@@ -52,7 +53,8 @@ const Menu = () => {
 			<Helmet>
 				<title>Menu / Yolk</title>
 			</Helmet>
-			<div className="menu">
+			<main className="menu">
+				<PageTop title={"Menu"} />
 				<nav className="menu__nav">
 					<a className="menu__nav-link menu__nav-link--active" href="#starters">
 						Starters
@@ -188,7 +190,7 @@ const Menu = () => {
 							);
 						})}
 				</div>
-			</div>
+			</main>
 		</>
 	);
 };

@@ -1,7 +1,9 @@
 import { NavLink } from "react-router-dom";
 import logo from "/logo-black.png";
-import "./Header.scss";
 import { useEffect } from "react";
+import workingHoursIcon from "/icons/working-hours.png";
+import shoppingCartIcon from "/icons/shopping-cart.png";
+import "./Header.scss";
 
 const Header = () => {
 	useEffect(() => {
@@ -38,10 +40,19 @@ const Header = () => {
 					<span>lk</span>
 				</NavLink>
 				<nav className="header__nav">
-					<a href="">About</a>
+					<NavLink to="/">Home</NavLink>
+					<NavLink to="/about">About</NavLink>
 					<NavLink to="/menu">Menu</NavLink>
-					<a href="">Contact</a>
+					<NavLink to="/shop">Shop</NavLink>
+					<NavLink to="/blog">Blog</NavLink>
+					<NavLink to="/contact">Contact</NavLink>
 				</nav>
+				<div className="header__working-hours">
+					<img src={workingHoursIcon} width={20} alt="" />
+				</div>
+				<button className="header__cart">
+					<img src={shoppingCartIcon} width={20} alt="" />
+				</button>
 				<button onClick={openBookATable} className="header__btn">
 					Book a table
 				</button>
