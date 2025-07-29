@@ -1,8 +1,8 @@
 import { Helmet } from "react-helmet-async";
 import { useEffect } from "react";
 import menuData from "./../../assets/data/menu-data.json";
-import "./Menu.scss";
 import PageTop from "../../components/PageTop/PageTop";
+import "./Menu.scss";
 
 const Menu = () => {
 	useEffect(() => {
@@ -30,7 +30,7 @@ const Menu = () => {
 			menuInner.forEach((el, index) => {
 				nav[index].classList.remove("menu__nav-link--active");
 				const elRect = el.getBoundingClientRect();
-				if (elRect.top <= 100 && elRect.bottom > 0) {
+				if (elRect.top <= 110 && elRect.bottom > 10) {
 					const prevLink = nav[index > 0 ? index - 1 : index];
 					const prevLinkWidth = prevLink.offsetWidth;
 					const offset = 20;
@@ -65,9 +65,9 @@ const Menu = () => {
 					<a className="menu__nav-link" href="#dinner">
 						Dinner
 					</a>
-					<a className="menu__nav-link" href="#wine">
+					{/* <a className="menu__nav-link" href="#wine">
 						Wine
-					</a>
+					</a> */}
 					<a className="menu__nav-link" href="#drinks">
 						Drinks
 					</a>

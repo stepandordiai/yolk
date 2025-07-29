@@ -4,18 +4,9 @@
 	align-items: center;
 }
 
-.curtain {
-	// position: fixed;
-	// top: 0;
-	// right: 0;
-	// bottom: 0;
-	// left: 0;
-	// background: white;
-	// transform: translateY(100%);
-}
-
 .menu__nav {
 	background: rgba(0, 0, 0, 0.5);
+	-webkit-backdrop-filter: blur(10px);
 	backdrop-filter: blur(10px);
 	padding: 10px;
 	// TODO:
@@ -26,11 +17,13 @@
 	position: sticky;
 	top: 10px;
 	z-index: 2;
+	height: 50px;
 	display: flex;
 	column-gap: 10px;
 	border-radius: 25px;
 	overflow-x: scroll;
 	margin-bottom: 40px;
+	margin-top: 10px;
 
 	a {
 		color: #fff;

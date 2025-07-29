@@ -1,9 +1,20 @@
 @use "./../../scss/mixins" as *;
 
 .page-top {
-	height: 50svh;
+	height: 25svh;
 	width: 100%;
 	background: var(--accent-clr);
 	@include flex-center;
 	flex-direction: column;
+}
+
+.page-top__link {
+	font-size: 1.5rem;
+	line-height: 20px;
+	color: #000;
+}
+
+.page-top__title {
+	font-size: 3rem;
+	color: #000;
 }
