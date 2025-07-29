@@ -4,9 +4,9 @@
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	width: 50%;
+	width: 500px;
 	height: calc(100% - 20px);
-	border-radius: 10px;
+	border-radius: 20px;
 	z-index: 101;
 	background: #fff;
 	color: #000;
@@ -19,7 +19,7 @@
 }
 
 .book-a-table__header {
-	margin-bottom: 40px;
+	margin-bottom: 20px;
 }
 
 .book-a-table__title {
@@ -85,13 +85,7 @@ textarea {
 	font-weight: inherit;
 }
 
-@media screen and (width < 896px) {
-	.book-a-table {
-		width: 75%;
-	}
-}
-
-@media screen and (width < 600px) {
+@media screen and (width <= 520px) {
 	.book-a-table {
 		width: calc(100% - 20px);
 	}

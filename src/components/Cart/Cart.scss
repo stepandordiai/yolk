@@ -1,0 +1,157 @@
+.cart {
+	position: fixed;
+	top: 0;
+	right: 0;
+	height: 100dvh;
+	z-index: 101;
+	width: 500px;
+	background: var(--bg-clr);
+	border-radius: 20px 0 0 20px;
+	padding: 20px;
+	transform: translateX(100%);
+	transition: transform 0.5s ease;
+	display: flex;
+	flex-direction: column;
+}
+
+.cart--active {
+	transform: translateX(0);
+}
+
+.cart__close-btn {
+	color: var(--accent-clr);
+	transition: opacity 0.3s;
+
+	&:hover {
+		opacity: 0.75;
+	}
+}
+
+.cart__title {
+	font-size: 3rem;
+	margin-bottom: 20px;
+}
+
+.cart__items {
+	overflow-y: scroll;
+}
+
+.cart__item {
+	display: flex;
+	padding-bottom: 20px;
+	margin-bottom: 20px;
+	column-gap: 10px;
+
+	&:not(:nth-last-child(1)) {
+		border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+	}
+}
+
+.cart__item-img-container {
+	border-radius: 10px;
+	overflow: hidden;
+
+	img {
+		width: 150px;
+	}
+}
+
+.cart__item-details {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: flex-start;
+	padding: 5px 0;
+}
+
+.cart__item-counter {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 5px;
+}
+
+.qty-btn {
+	width: 30px;
+	aspect-ratio: 1 / 1;
+	background: var(--accent-clr);
+	color: #000;
+	border-radius: 50%;
+	transition: opacity 0.3s;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	&:hover {
+		opacity: 0.75;
+	}
+}
+
+.qty-txt {
+	width: 30px;
+	aspect-ratio: 1 / 1;
+	border: 1px solid var(--accent-clr);
+	border-radius: 50%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.cart__remove-btn {
+	margin-left: auto;
+	align-self: flex-start;
+	padding: 5px 0;
+	color: var(--accent-clr);
+	transition: opacity 0.3s;
+
+	&:hover {
+		opacity: 0.75;
+	}
+}
+
+.cart__footer {
+	margin-top: auto;
+	padding-top: 20px;
+	div {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		font-size: 1.25rem;
+	}
+}
+
+.checkout-btn {
+	background: var(--accent-clr);
+	color: #000;
+	width: 100%;
+	height: 30px;
+	border-radius: 10px;
+	margin-top: 10px;
+	transition: opacity 0.3s;
+
+	&:hover {
+		opacity: 0.75;
+	}
+}
+
+.cart__curtain {
+	position: fixed;
+	z-index: 100;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0);
+	pointer-events: none;
+	transition: background-color 0.5s ease;
+}
+
+.cart__curtain--active {
+	pointer-events: all;
+	background: rgba(0, 0, 0, 0.5);
+}
+
+@media screen and (width <= 500px) {
+	.cart {
+		width: 100%;
+		border-radius: 0;
+	}
+}

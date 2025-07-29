@@ -3,7 +3,7 @@
 .page-top {
 	height: 50svh;
 	width: 100%;
-	background: red;
+	background: var(--accent-clr);
 	@include flex-center;
 	flex-direction: column;
 }

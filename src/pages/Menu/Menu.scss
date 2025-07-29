@@ -40,7 +40,8 @@
 }
 
 .menu__nav-link--active {
-	background: #c1af0f;
+	background: var(--accent-clr);
+	color: #000 !important;
 }
 
 .menu__inner {
@@ -64,7 +65,7 @@
 
 .menu__item-special {
 	position: relative;
-	border: 1px solid #c1af0f;
+	border: 1px solid var(--accent-clr);
 	border-radius: 10px;
 
 	&::before {
@@ -72,7 +73,8 @@
 		position: absolute;
 		top: 0;
 		right: 0;
-		background: #c1af0f;
+		background: var(--accent-clr);
+		color: #000;
 		padding: 5px;
 		border-radius: 5px;
 		transform: translate(-10px, -50%);

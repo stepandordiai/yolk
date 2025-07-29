@@ -1,5 +1,6 @@
 @use "reset";
 @use "fonts";
+@use "variables";
 
 html {
 	scroll-behavior: smooth !important;
@@ -12,6 +13,6 @@ html {
 
 body {
 	font-family: "Glacial Indifference", sans-serif;
-	background: #000;
+	background: var(--bg-clr);
 	color: #fff;
 }
