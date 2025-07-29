@@ -4,16 +4,16 @@
 	position: fixed;
 	bottom: 10px;
 	left: 50%;
-	z-index: 1;
+	z-index: 10;
 	min-height: 50px;
 	transform: translateX(-50%);
-	width: max-content;
+	width: 600px;
 	background: #fff;
 	backdrop-filter: blur(10px);
 	padding: 10px;
 	border-radius: 25px;
 	display: flex;
-	column-gap: 10px;
+	column-gap: 5px;
 	transition: transform 0.3s;
 }
 
@@ -29,26 +29,111 @@
 }
 
 .header__nav {
+	margin: auto;
 	@include flex-center;
-	column-gap: 5px;
+}
 
-	a {
-		color: #000;
+.header__nav-link {
+	color: #000;
+	border-radius: 15px;
+	padding: 0 7.5px;
+	height: 30px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	transition: background-color 0.3s;
+
+	&:hover {
+		background: var(--accent-clr);
 	}
+}
+
+.header__nav-link--active {
+	background: var(--accent-clr);
 }
 
 .header__working-hours {
 	@include flex-center;
+	width: 30px;
+
+	&:hover .working-hours-wrapper {
+		opacity: 1;
+		pointer-events: all;
+	}
 }
 
+.working-hours-wrapper {
+	position: fixed;
+	bottom: 40px;
+	left: 50%;
+	transform: translateX(-50%);
+	z-index: 1;
+	width: 600px;
+	opacity: 0;
+	pointer-events: none;
+}
+
+.header__working-hours-container {
+	color: #000;
+	background: #fff;
+	border-radius: 25px;
+	padding: 20px;
+}
+
+.gap {
+	height: 20px;
+	width: 100%;
+	flex-grow: 1;
+}
+
+.working-hours-title {
+	text-align: start;
+	font-size: 1.5rem;
+	margin-bottom: 20px;
+}
+
+.working-hours-list {
+	li {
+		display: flex;
+		justify-content: space-between;
+		padding: 10px 0;
+
+		&:not(:nth-last-child(1)) {
+			border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+		}
+	}
+}
+
+// TODO:
 .header__btn {
 	background: #000;
 	padding: 0 7.5px;
 	border-radius: 15px;
+	overflow: hidden;
+	height: 30px;
+	display: flex;
+
+	div {
+		display: flex;
+		flex-direction: column;
+		transition: transform 0.3s ease;
+	}
+
+	&:hover div {
+		transform: translateY(-100%);
+	}
+
+	p {
+		color: #fff;
+		line-height: 30px;
+		height: 30px;
+		text-align: center;
+	}
 }
 
 .header__cart {
 	position: relative;
+	width: 30px;
 
 	span {
 		position: absolute;
@@ -64,6 +149,24 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		transform: translate(50%, -25%);
+		transform: translate(25%, -25%);
+	}
+}
+
+@media screen and (width <= 620px) {
+	.header {
+		width: calc(100% - 20px);
+	}
+
+	.header__nav {
+		display: none;
+	}
+
+	.header__working-hours {
+		margin-left: auto;
+	}
+
+	.working-hours-wrapper {
+		width: 100%;
 	}
 }

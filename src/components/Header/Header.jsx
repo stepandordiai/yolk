@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import workingHoursIcon from "/icons/working-hours.png";
 import shoppingCartIcon from "/icons/shopping-cart.png";
 import "./Header.scss";
+import BurgerBtn from "../BurgerBtn/BurgerBtn";
 
 const Header = ({ cart }) => {
 	useEffect(() => {
@@ -46,6 +47,9 @@ const Header = ({ cart }) => {
 		}
 	};
 
+	const inactiveLink = "header__nav-link";
+	const activeLink = "header__nav-link header__nav-link--active";
+
 	return (
 		<>
 			<div className="header">
@@ -54,23 +58,93 @@ const Header = ({ cart }) => {
 					<img src={logo} width={20} alt="" />
 					<span>lk</span>
 				</NavLink>
+				<BurgerBtn />
 				<nav className="header__nav">
-					<NavLink to="/">Home</NavLink>
-					<NavLink to="/about">About</NavLink>
-					<NavLink to="/menu">Menu</NavLink>
-					<NavLink to="/shop">Shop</NavLink>
-					<NavLink to="/blog">Blog</NavLink>
-					<NavLink to="/contact">Contact</NavLink>
+					<NavLink
+						className={({ isActive }) => (isActive ? activeLink : inactiveLink)}
+						to="/"
+					>
+						Home
+					</NavLink>
+					<NavLink
+						className={({ isActive }) => (isActive ? activeLink : inactiveLink)}
+						to="/about"
+					>
+						About
+					</NavLink>
+					<NavLink
+						className={({ isActive }) => (isActive ? activeLink : inactiveLink)}
+						to="/menu"
+					>
+						Menu
+					</NavLink>
+					<NavLink
+						className={({ isActive }) => (isActive ? activeLink : inactiveLink)}
+						to="/shop"
+					>
+						Shop
+					</NavLink>
+					<NavLink
+						className={({ isActive }) => (isActive ? activeLink : inactiveLink)}
+						to="/blog"
+					>
+						Blog
+					</NavLink>
+					<NavLink
+						className={({ isActive }) => (isActive ? activeLink : inactiveLink)}
+						to="/contact"
+					>
+						Contact
+					</NavLink>
 				</nav>
 				<div className="header__working-hours">
-					<img src={workingHoursIcon} width={20} alt="" />
+					<img src={workingHoursIcon} width={20} height={20} alt="" />
+					<div className="working-hours-wrapper">
+						<div className="header__working-hours-container">
+							<p className="working-hours-title">Working Hours</p>
+							<ul className="working-hours-list">
+								<li>
+									<span>Monday</span>
+									<span>10am - 5pm</span>
+								</li>
+								<li>
+									<span>Tuesday</span>
+									<span>10am - 5pm</span>
+								</li>
+								<li>
+									<span>Wednesday</span>
+									<span>10am - 5pm</span>
+								</li>
+								<li>
+									<span>Thursday</span>
+									<span>10am - 5pm</span>
+								</li>
+								<li>
+									<span>Friday</span>
+									<span>10am - 5pm</span>
+								</li>
+								<li>
+									<span>Saturday</span>
+									<span>Closed</span>
+								</li>
+								<li>
+									<span>Sunday</span>
+									<span>Closed</span>
+								</li>
+							</ul>
+						</div>
+						<div className="gap"></div>
+					</div>
 				</div>
 				<button onClick={showCart} className="header__cart">
-					<img src={shoppingCartIcon} width={20} alt="" />
+					<img src={shoppingCartIcon} width={20} height={20} alt="" />
 					{cart.length > 0 && <span>{cart.length}</span>}
 				</button>
 				<button onClick={openBookATable} className="header__btn">
-					Book a table
+					<div>
+						<p>Book a table</p>
+						<p>Book a table</p>
+					</div>
 				</button>
 			</div>
 		</>
