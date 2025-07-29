@@ -97,6 +97,10 @@ const Header = ({ cart }) => {
 						Contact
 					</NavLink>
 				</nav>
+				<button onClick={showCart} className="header__cart">
+					<img src={shoppingCartIcon} width={20} height={20} alt="" />
+					{cart.length > 0 && <span>{cart.length}</span>}
+				</button>
 				<div className="header__working-hours">
 					<img src={workingHoursIcon} width={20} height={20} alt="" />
 					<div className="working-hours-wrapper">
@@ -136,10 +140,7 @@ const Header = ({ cart }) => {
 						<div className="gap"></div>
 					</div>
 				</div>
-				<button onClick={showCart} className="header__cart">
-					<img src={shoppingCartIcon} width={20} height={20} alt="" />
-					{cart.length > 0 && <span>{cart.length}</span>}
-				</button>
+
 				<button onClick={openBookATable} className="header__btn">
 					<div>
 						<p>Book a table</p>

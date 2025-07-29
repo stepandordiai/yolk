@@ -5,7 +5,8 @@
 	left: 50%;
 	transform: translate(-50%, -50%);
 	width: 500px;
-	height: calc(100% - 20px);
+	height: calc(100dvh - 20px);
+	overflow-y: scroll;
 	border-radius: 20px;
 	z-index: 101;
 	background: #fff;
