@@ -8,26 +8,23 @@ const Shop = () => {
 		<>
 			<main className="shop">
 				<PageTop title="Shop" />
-				<div className="">
+				<div className="shop__container">
 					{giftCardsData.map((giftCard) => {
 						return (
 							<NavLink
 								className="gift-card__container"
 								to={`/gift-card-page/${giftCard.id}`}
 							>
-								<div>
-									<img src={giftCard.img} alt="" />
+								<div className="gift-card__img-wrapper">
+									<img width={180} src={giftCard.img} alt="" />
 								</div>
 								<div>
 									<p>$ {(giftCard.priceCents / 100).toFixed(2)}</p>
 									<p>{giftCard.name}</p>
-									<div>
-										Lorem ipsum dolor sit amet consectetur adipisicing elit.
-										Itaque pariatur autem quam. Earum aliquam debitis
-										repellendus voluptatum nihil beatae ea omnis illum similique
-										harum, porro obcaecati ad nostrum nisi voluptatem?
-									</div>
 								</div>
+								<p style={{ marginLeft: "auto", color: "var(--accent-clr)" }}>
+									Buy
+								</p>
 							</NavLink>
 						);
 					})}

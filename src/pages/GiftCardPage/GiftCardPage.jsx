@@ -1,8 +1,8 @@
 import { useParams } from "react-router-dom";
 import giftCardsData from "./../../assets/data/gift-cards-data.json";
-import "./GiftCardPage.scss";
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
+import "./GiftCardPage.scss";
 
 const GiftCardPage = ({ setCart }) => {
 	const { id } = useParams();
@@ -30,17 +30,37 @@ const GiftCardPage = ({ setCart }) => {
 	return (
 		<>
 			<main className="gift-card-page">
-				<NavLink to="/shop">Shop</NavLink>
+				<NavLink className="gift-card-page__link" to="/shop">
+					Back to Shop
+				</NavLink>
+				<h1 className="gift-card-page__title">{giftCard.name}</h1>
 				<img src={giftCard.img} alt="" />
-				<h1>{giftCard.name}</h1>
-				<p>{giftCard.priceCents} USD</p>
-				<input
-					type="number"
-					value={qty}
-					onChange={(e) => setQty(e.target.value)}
-					placeholder="Qty"
-				/>
-				<p>{qty}</p>
+				<div
+					style={{
+						display: "flex",
+						justifyContent: "space-between",
+					}}
+				>
+					<p>$ {(giftCard.priceCents / 100).toFixed(2)}</p>
+					{/* <input
+						type="number"
+						value={qty}
+						onChange={(e) => setQty(e.target.value)}
+						placeholder="Qty"
+					/> */}
+					<div
+						style={{
+							display: "flex",
+							justifyContent: "center",
+							alignItems: "center",
+							// justifyContent: "space-between",
+						}}
+					>
+						<button className="qty-btn">-</button>
+						<p className="qty-txt">{qty}</p>
+						<button className="qty-btn">+</button>
+					</div>
+				</div>
 				<button onClick={() => addToCart(giftCard, Number(qty))}>
 					ADD TO CART
 				</button>

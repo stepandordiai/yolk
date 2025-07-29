@@ -3,4 +3,33 @@
 	margin: auto;
 	display: flex;
 	flex-direction: column;
+	padding: 10px;
+}
+
+.gift-card-page__link {
+	color: var(--accent-clr);
+	// margin: 20px 0;
+	margin-top: 10px;
+	transition: opacity 0.3s;
+
+	&:hover {
+		opacity: 0.75;
+	}
+}
+
+.gift-card-page__title {
+	font-size: 2rem;
+	margin-bottom: 20px;
+}
+
+@media screen and (width < 896px) {
+	.gift-card-page {
+		width: 75%;
+	}
+}
+
+@media screen and (width < 600px) {
+	.gift-card-page {
+		width: 100%;
+	}
 }
