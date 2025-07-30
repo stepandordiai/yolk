@@ -3,14 +3,14 @@
 		"id": 1,
 		"name": "Tomato Soup",
 		"priceCents": 490,
-		"img": "/menu-img/starters-01.jpg",
+		"img": "/menu-img/starters-01-c.jpg",
 		"type": "starters"
 	},
 	{
 		"id": 2,
 		"name": "Noodle Soup",
 		"priceCents": 550,
-		"img": "/menu-img/starters-02.jpg",
+		"img": "/menu-img/starters-02-c.jpg",
 		"type": "starters",
 		"special": "Starter of the Day"
 	},
@@ -18,84 +18,84 @@
 		"id": 3,
 		"name": "Pumpkin Soup",
 		"priceCents": 690,
-		"img": "/menu-img/starters-03.jpg",
+		"img": "/menu-img/starters-03-c.jpg",
 		"type": "starters"
 	},
 	{
 		"id": 4,
 		"name": "Delicious Pancakes",
 		"priceCents": 890,
-		"img": "/menu-img/breakfast-01.jpg",
+		"img": "/menu-img/breakfast-01-c.jpg",
 		"type": "breakfast"
 	},
 	{
 		"id": 5,
 		"name": "Sweet Heaven",
 		"priceCents": 990,
-		"img": "/menu-img/breakfast-02.jpg",
+		"img": "/menu-img/breakfast-02-c.jpg",
 		"type": "breakfast"
 	},
 	{
 		"id": 6,
 		"name": "Oatmeal Spirit",
 		"priceCents": 990,
-		"img": "/menu-img/breakfast-03.jpg",
+		"img": "/menu-img/breakfast-03-c.jpg",
 		"type": "breakfast"
 	},
 	{
 		"id": 7,
 		"name": "Avocado Smash",
 		"priceCents": 790,
-		"img": "/menu-img/breakfast-04.jpg",
+		"img": "/menu-img/breakfast-04-c.jpg",
 		"type": "breakfast"
 	},
 	{
 		"id": 8,
 		"name": "Italian Pizza",
 		"priceCents": 1290,
-		"img": "/menu-img/dinner-01.jpg",
+		"img": "/menu-img/dinner-01-c.jpg",
 		"type": "dinner"
 	},
 	{
 		"id": 9,
 		"name": "Vegan Burger",
 		"priceCents": 1390,
-		"img": "/menu-img/dinner-02.jpg",
+		"img": "/menu-img/dinner-02-c.jpg",
 		"type": "dinner"
 	},
 	{
 		"id": 10,
 		"name": "Sea Curry",
 		"priceCents": 990,
-		"img": "/menu-img/dinner-03.jpg",
+		"img": "/menu-img/dinner-03-c.jpg",
 		"type": "dinner"
 	},
 	{
 		"id": 11,
 		"name": "Noodle Bowl",
 		"priceCents": 990,
-		"img": "/menu-img/dinner-04.jpg",
+		"img": "/menu-img/dinner-04-c.jpg",
 		"type": "dinner"
 	},
 	{
 		"id": 12,
 		"name": "Panthouse Tonic",
 		"priceCents": 990,
-		"img": "/menu-img/drinks-01.jpg",
+		"img": "/menu-img/drinks-01-c.jpg",
 		"type": "drinks"
 	},
 	{
 		"id": 13,
 		"name": "Apple Breeze",
 		"priceCents": 990,
-		"img": "/menu-img/drinks-02.jpg",
+		"img": "/menu-img/drinks-02-c.jpg",
 		"type": "drinks"
 	},
 	{
 		"id": 14,
 		"name": "Frenchman Blitz",
 		"priceCents": 990,
-		"img": "/menu-img/drinks-03.jpg",
+		"img": "/menu-img/drinks-03-c.jpg",
 		"type": "drinks"
 	}
 ]

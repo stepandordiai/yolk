@@ -56,7 +56,7 @@ const Menu = () => {
 			<main className="menu">
 				<PageTop title={"Menu"} />
 				<nav className="menu__nav">
-					<a className="menu__nav-link menu__nav-link--active" href="#starters">
+					<a className="menu__nav-link" href="#starters">
 						Starters
 					</a>
 					<a className="menu__nav-link" href="#lunch">
@@ -65,9 +65,6 @@ const Menu = () => {
 					<a className="menu__nav-link" href="#dinner">
 						Dinner
 					</a>
-					{/* <a className="menu__nav-link" href="#wine">
-						Wine
-					</a> */}
 					<a className="menu__nav-link" href="#drinks">
 						Drinks
 					</a>
@@ -88,7 +85,7 @@ const Menu = () => {
 									data-special-value={item.special}
 								>
 									<div className="menu__item-img-wrapper">
-										<img src={item.img} alt="" />
+										<img src={item.img} alt="" loading="lazy" />
 									</div>
 									<div className="menu__item-info">
 										<div className="menu__item-info-top">
@@ -117,7 +114,7 @@ const Menu = () => {
 									data-special-value="Starter of the Day"
 								>
 									<div className="menu__item-img-wrapper">
-										<img src={item.img} alt="" />
+										<img src={item.img} alt="" loading="lazy" />
 									</div>
 									<div className="menu__item-info">
 										<div className="menu__item-info-top">
@@ -146,7 +143,7 @@ const Menu = () => {
 									data-special-value="Starter of the Day"
 								>
 									<div className="menu__item-img-wrapper">
-										<img src={item.img} alt="" />
+										<img src={item.img} alt="" loading="lazy" />
 									</div>
 									<div className="menu__item-info">
 										<div className="menu__item-info-top">
@@ -175,7 +172,7 @@ const Menu = () => {
 									data-special-value="Starter of the Day"
 								>
 									<div className="menu__item-img-wrapper">
-										<img src={item.img} alt="" />
+										<img src={item.img} alt="" loading="lazy" />
 									</div>
 									<div className="menu__item-info">
 										<div className="menu__item-info-top">

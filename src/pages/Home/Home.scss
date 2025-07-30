@@ -2,10 +2,24 @@
 
 .home__top {
 	min-height: 100svh;
-	@include flex-center;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	flex-direction: column;
 	text-align: center;
-	font-size: 3rem;
-	background-image: url("/pexels-fotios-photos-776538.jpg");
+	background-image: url("/home-bg-c.jpg");
 	background-repeat: no-repeat;
 	background-size: cover;
+	margin-bottom: 100px;
+	padding: 70px 0;
+}
+
+.home-top__link {
+	color: #fff;
+	line-height: 40px;
+	font-size: 3rem;
+}
+
+.home-top__title {
+	font-size: clamp(3rem, 6vw, 6rem);
 }
