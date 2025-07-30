@@ -39,7 +39,7 @@ const BookATable = () => {
 					<input
 						className="input"
 						id="date-to-come"
-						value={formatDate}
+						defaultValue={formatDate}
 						type="date"
 					/>
 				</div>
@@ -48,7 +48,7 @@ const BookATable = () => {
 					<input
 						className="input"
 						id="time-to-come"
-						value={`${formatHours}:${formatMinutes}`}
+						defaultValue={`${formatHours}:${formatMinutes}`}
 						type="time"
 					/>
 				</div>

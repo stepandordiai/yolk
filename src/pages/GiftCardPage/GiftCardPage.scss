@@ -4,6 +4,7 @@
 	display: flex;
 	flex-direction: column;
 	padding: 10px;
+	position: relative;
 }
 
 .gift-card-page__link {
@@ -20,6 +21,29 @@
 .gift-card-page__title {
 	font-size: 2rem;
 	margin-bottom: 20px;
+}
+
+.gift-card-page__img-container {
+	border-radius: 20px;
+	overflow: hidden;
+	margin-bottom: 20px;
+}
+
+.gift-card-page__add-to-cart-btn {
+	background: var(--accent-clr);
+	color: #000;
+	border-radius: 10px;
+	height: 30px;
+	margin-top: 20px;
+	transition: opacity 0.3s;
+
+	&:hover {
+		opacity: 0.75;
+	}
+}
+
+.qty-btn:disabled {
+	opacity: 0.5 !important;
 }
 
 @media screen and (width < 896px) {

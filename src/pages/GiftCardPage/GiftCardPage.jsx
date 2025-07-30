@@ -4,28 +4,72 @@ import { NavLink } from "react-router-dom";
 import { useState } from "react";
 import "./GiftCardPage.scss";
 
-const GiftCardPage = ({ setCart }) => {
+const GiftCardPage = ({ setCart, cart }) => {
 	const { id } = useParams();
 
 	const [qty, setQty] = useState(1);
 
 	const addToCart = (item, qty) => {
 		setCart((prevCart) => {
-			const existingItem = prevCart.find((cartItem) => cartItem.id === item.id);
+			// const existingItem = prevCart.find((cartItem) => cartItem.id === item.id);
 
-			if (existingItem) {
-				return prevCart.map((cartItem) =>
-					cartItem.id === item.id
-						? { ...cartItem, itemQty: cartItem.itemQty + qty }
-						: item
-				);
-			} else {
-				return [...prevCart, { ...item, itemQty: qty }];
-			}
+			// if (existingItem) {
+			// 	return prevCart.map((cartItem) =>
+			// 		cartItem.id === item.id
+			// 			? { ...cartItem, itemQty: cartItem.itemQty + qty }
+			// 			: item
+			// 	);
+			// } else {
+			return [...prevCart, { ...item, itemQty: qty }];
+			// }
 		});
+
+		const element = document.createElement("div");
+
+		element.textContent = "Added to Cart";
+
+		const giftCardPage = document.querySelector(".gift-card-page");
+
+		giftCardPage.appendChild(element);
+
+		Object.assign(element.style, {
+			position: "absolute",
+			top: "10px",
+			left: "10px",
+			right: "10px",
+			height: "50px",
+			backgroundColor: "var(--accent-clr)",
+			color: "#000",
+			display: "flex",
+			justifyContent: "center",
+			alignItems: "center",
+			borderRadius: "25px",
+		});
+
+		setTimeout(() => {
+			element.remove();
+			showCart();
+		}, 3000);
+	};
+
+	const showCart = () => {
+		const cart = document.querySelector(".cart");
+		if (!cart.classList.contains("cart--active")) {
+			cart.classList.add("cart--active");
+			document
+				.querySelector(".cart__curtain")
+				.classList.add("cart__curtain--active");
+		} else {
+			cart.classList.remove("cart--active");
+			document
+				.querySelector(".cart__curtain")
+				.classList.remove("cart__curtain--active");
+		}
 	};
 
 	const giftCard = giftCardsData.find((giftCard) => giftCard.id == id);
+
+	const itemIsInCart = cart.find((cartItem) => cartItem.id == giftCard.id);
 
 	return (
 		<>
@@ -34,36 +78,58 @@ const GiftCardPage = ({ setCart }) => {
 					Back to Shop
 				</NavLink>
 				<h1 className="gift-card-page__title">{giftCard.name}</h1>
-				<img src={giftCard.img} alt="" />
+				<div className="gift-card-page__img-container">
+					<img src={giftCard.img} alt="" />
+				</div>
 				<div
 					style={{
 						display: "flex",
 						justifyContent: "space-between",
 					}}
 				>
-					<p>$ {(giftCard.priceCents / 100).toFixed(2)}</p>
-					{/* <input
-						type="number"
-						value={qty}
-						onChange={(e) => setQty(e.target.value)}
-						placeholder="Qty"
-					/> */}
+					<p style={{ fontSize: "1.5rem" }}>
+						$ {(giftCard.priceCents / 100).toFixed(2)}
+					</p>
 					<div
 						style={{
 							display: "flex",
 							justifyContent: "center",
 							alignItems: "center",
-							// justifyContent: "space-between",
+							gap: 5,
 						}}
 					>
-						<button className="qty-btn">-</button>
+						<button
+							onClick={() => setQty(Math.max(qty - 1, 1))}
+							className="qty-btn"
+							disabled={qty === 1}
+						>
+							-
+						</button>
 						<p className="qty-txt">{qty}</p>
-						<button className="qty-btn">+</button>
+						<button
+							onClick={() => setQty(Math.min(qty + 1, 10))}
+							className="qty-btn"
+							disabled={qty === 10}
+						>
+							+
+						</button>
 					</div>
 				</div>
-				<button onClick={() => addToCart(giftCard, Number(qty))}>
-					ADD TO CART
-				</button>
+				{!itemIsInCart ? (
+					<button
+						className="gift-card-page__add-to-cart-btn"
+						onClick={() => addToCart(giftCard, Number(qty))}
+					>
+						Add to Cart
+					</button>
+				) : (
+					<button
+						className="gift-card-page__add-to-cart-btn"
+						onClick={showCart}
+					>
+						In Cart
+					</button>
+				)}
 			</main>
 		</>
 	);

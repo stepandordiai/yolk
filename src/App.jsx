@@ -28,7 +28,7 @@ function App() {
 				<Route path="/shop" element={<Shop />} />
 				<Route
 					path="/gift-card-page/:id"
-					element={<GiftCardPage setCart={setCart} />}
+					element={<GiftCardPage setCart={setCart} cart={cart} />}
 				/>
 			</Routes>
 			<Footer />
