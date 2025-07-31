@@ -21,6 +21,10 @@
 	border-radius: 10px;
 	overflow: hidden;
 	height: 100%;
+
+	img {
+		width: clamp(140px, 12vw, 180px);
+	}
 }
 
 .shop__container {

@@ -140,7 +140,6 @@ const Header = ({ cart }) => {
 						<div className="gap"></div>
 					</div>
 				</div>
-
 				<button onClick={openBookATable} className="header__btn">
 					<div>
 						<p>Book a table</p>

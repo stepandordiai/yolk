@@ -55,6 +55,7 @@
 .header__working-hours {
 	@include flex-center;
 	width: 30px;
+	cursor: pointer;
 
 	&:hover .working-hours-wrapper {
 		opacity: 1;

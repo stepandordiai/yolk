@@ -16,7 +16,7 @@ const Shop = () => {
 								to={`/gift-card-page/${giftCard.id}`}
 							>
 								<div className="gift-card__img-wrapper">
-									<img width={180} src={giftCard.img} alt="" />
+									<img src={giftCard.img} alt="" />
 								</div>
 								<div>
 									<p>$ {(giftCard.priceCents / 100).toFixed(2)}</p>
