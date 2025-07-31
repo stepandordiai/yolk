@@ -33,7 +33,7 @@ const GiftCardPage = ({ setCart, cart }) => {
 		giftCardPage.appendChild(element);
 
 		Object.assign(element.style, {
-			position: "absolute",
+			position: "fixed",
 			top: "10px",
 			left: "10px",
 			right: "10px",
@@ -54,22 +54,23 @@ const GiftCardPage = ({ setCart, cart }) => {
 
 	const showCart = () => {
 		const cart = document.querySelector(".cart");
-		if (!cart.classList.contains("cart--active")) {
-			cart.classList.add("cart--active");
-			document
-				.querySelector(".cart__curtain")
-				.classList.add("cart__curtain--active");
-		} else {
-			cart.classList.remove("cart--active");
-			document
-				.querySelector(".cart__curtain")
-				.classList.remove("cart__curtain--active");
-		}
+		// if (!cart.classList.contains("cart--active")) {
+		cart.classList.add("cart--active");
+		document
+			.querySelector(".cart__curtain")
+			.classList.add("cart__curtain--active");
+		// } else {
+		// cart.classList.remove("cart--active");
+		// document
+		// .querySelector(".cart__curtain")
+		// .classList.remove("cart__curtain--active");
+		// }
 	};
 
 	const giftCard = giftCardsData.find((giftCard) => giftCard.id == id);
 
-	const itemIsInCart = cart.find((cartItem) => cartItem.id == giftCard.id);
+	// FIXME: method some() is more efficient here and return boolean and not data
+	const itemIsInCart = cart.some((cartItem) => cartItem.id == giftCard.id);
 
 	return (
 		<>

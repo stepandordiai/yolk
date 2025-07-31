@@ -3,18 +3,18 @@
 		"id": 1,
 		"name": "Gift Card Standard",
 		"priceCents": 3000,
-		"img": "/yolk-gc-standard-v1.png"
+		"img": "/yolk-gc-standard-v1-c.png"
 	},
 	{
 		"id": 2,
 		"name": "Gift Card Premium",
 		"priceCents": 5000,
-		"img": "/yolk-gc-premium-v1.png"
+		"img": "/yolk-gc-premium-v1-c.png"
 	},
 	{
 		"id": 3,
 		"name": "Gift Card Yolk Edition",
 		"priceCents": 10000,
-		"img": "/yolk-gc-yolk-edition-v1.png"
+		"img": "/yolk-gc-yolk-edition-v1-c.png"
 	}
 ]
