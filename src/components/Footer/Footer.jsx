@@ -1,11 +1,14 @@
 import { NavLink } from "react-router-dom";
-import "./Footer.scss";
 import logoWhite from "/logo-white.png";
+import "./Footer.scss";
 
 const Footer = () => {
 	const openBookATable = () => {
 		document.querySelector(".book-a-table").style.display = "flex";
 	};
+
+	const inactiveFooterNavLink = "footer__nav-link";
+	const activeFooterNavLink = "footer__nav-link footer__nav-link--active";
 
 	return (
 		<footer className="footer">
@@ -18,22 +21,60 @@ const Footer = () => {
 					</NavLink>
 					<p className="footer__creator">
 						Made with love by{" "}
-						<a href="https://stepandordiai.netlify.app/">STEPAN DORDIAI</a>
+						<a href="https://stepandordiai.netlify.app/" target="_blank">
+							STEPAN DORDIAI
+						</a>
 					</p>
 				</div>
 				<div>
 					<p style={{ marginBottom: 20 }}>Pages</p>
 					<nav className="footer__nav">
-						<NavLink className="footer__nav-link" to="/">
+						<NavLink
+							className={({ isActive }) =>
+								isActive ? activeFooterNavLink : inactiveFooterNavLink
+							}
+							to="/"
+						>
 							Home
 						</NavLink>
-						<NavLink className="footer__nav-link" to="/about">
+						<NavLink
+							className={({ isActive }) =>
+								isActive ? activeFooterNavLink : inactiveFooterNavLink
+							}
+							to="/about"
+						>
 							About
 						</NavLink>
-						<NavLink className="footer__nav-link" to="/menu">
+						<NavLink
+							className={({ isActive }) =>
+								isActive ? activeFooterNavLink : inactiveFooterNavLink
+							}
+							to="/menu"
+						>
 							Menu
 						</NavLink>
-						<NavLink className="footer__nav-link" to="/contact">
+						<NavLink
+							className={({ isActive }) =>
+								isActive ? activeFooterNavLink : inactiveFooterNavLink
+							}
+							to="/shop"
+						>
+							Shop
+						</NavLink>
+						<NavLink
+							className={({ isActive }) =>
+								isActive ? activeFooterNavLink : inactiveFooterNavLink
+							}
+							to="/blog"
+						>
+							Blog
+						</NavLink>
+						<NavLink
+							className={({ isActive }) =>
+								isActive ? activeFooterNavLink : inactiveFooterNavLink
+							}
+							to="/contact"
+						>
 							Contact
 						</NavLink>
 					</nav>

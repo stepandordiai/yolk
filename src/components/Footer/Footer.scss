@@ -20,7 +20,7 @@
 		transition: color 0.3s;
 
 		&:hover {
-			color: hsl(0, 0%, 100%);
+			color: var(--accent-clr);
 		}
 	}
 }
@@ -43,8 +43,12 @@
 	transition: color 0.3s;
 
 	&:hover {
-		color: hsl(0, 0%, 100%);
+		color: var(--accent-clr);
 	}
+}
+
+.footer__nav-link--active {
+	color: var(--accent-clr);
 }
 
 .footer__btn {
