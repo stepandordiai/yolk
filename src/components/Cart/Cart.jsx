@@ -23,7 +23,7 @@ const Cart = ({ cart, setCart }) => {
 		setCart((prevItem) => {
 			return prevItem.map((chosenItem) => {
 				return chosenItem.id == cartItem.id
-					? // Math.max prevents qty less than 1
+					? // Math.min prevents qty more than 10
 					  { ...chosenItem, itemQty: Math.min(cartItem.itemQty + 1, 10) }
 					: chosenItem;
 			});
@@ -37,7 +37,7 @@ const Cart = ({ cart, setCart }) => {
 	};
 
 	const totalCartAmount = cart.reduce(
-		(gen, item) => gen + item.itemQty * item.priceCents,
+		(accumulator, item) => accumulator + item.itemQty * item.priceCents,
 		0
 	);
 
@@ -94,6 +94,7 @@ const Cart = ({ cart, setCart }) => {
 												<button
 													className="qty-btn"
 													onClick={() => decreaseQty(cartItem)}
+													disabled={cartItem.itemQty === 1}
 												>
 													-
 												</button>
@@ -101,6 +102,7 @@ const Cart = ({ cart, setCart }) => {
 												<button
 													className="qty-btn"
 													onClick={() => increaseQty(cartItem)}
+													disabled={cartItem.itemQty === 10}
 												>
 													<span>+</span>
 												</button>

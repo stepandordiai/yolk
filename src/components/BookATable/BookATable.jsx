@@ -28,11 +28,11 @@ const BookATable = () => {
 			>
 				<div className="input-container">
 					<label htmlFor="full-name">Full name</label>
-					<input id="full-name" type="text" />
+					<input id="full-name" type="text" name="name" />
 				</div>
 				<div className="input-container">
 					<label htmlFor="phone-number">Phone number</label>
-					<input id="phone-number" type="tel" />
+					<input id="phone-number" type="tel" name="tel" />
 				</div>
 				<div className="input-container">
 					<label htmlFor="date-to-come">Date to come</label>
@@ -41,6 +41,7 @@ const BookATable = () => {
 						id="date-to-come"
 						defaultValue={formatDate}
 						type="date"
+						name="date"
 					/>
 				</div>
 				<div className="input-container">
@@ -50,15 +51,16 @@ const BookATable = () => {
 						id="time-to-come"
 						defaultValue={`${formatHours}:${formatMinutes}`}
 						type="time"
+						name="time"
 					/>
 				</div>
 				<div className="input-container">
 					<label htmlFor="number-of-guests">Number of guests</label>
-					<input id="number-of-guests" type="number" />
+					<input id="number-of-guests" type="number" name="numberOfGuests" />
 				</div>
 				<div className="input-container text-area-input-container">
 					<label htmlFor="notes">Notes</label>
-					<textarea id="notes" type="number" />
+					<textarea id="notes" type="number" name="notes" />
 				</div>
 				<button className="book-a-table__form-btn" type="submit">
 					Reserve
