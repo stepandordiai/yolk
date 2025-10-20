@@ -2,11 +2,7 @@ import { NavLink } from "react-router-dom";
 import logoWhite from "/logo-white.png";
 import "./Footer.scss";
 
-const Footer = () => {
-	const openBookATable = () => {
-		document.querySelector(".book-a-table").style.display = "flex";
-	};
-
+const Footer = ({ setShowBookATable }) => {
 	const inactiveFooterNavLink = "footer__nav-link";
 	const activeFooterNavLink = "footer__nav-link footer__nav-link--active";
 
@@ -80,7 +76,10 @@ const Footer = () => {
 					</nav>
 				</div>
 				<div>
-					<button onClick={openBookATable} className="footer__btn">
+					<button
+						onClick={() => setShowBookATable(true)}
+						className="footer__btn"
+					>
 						Book a Table
 					</button>
 				</div>

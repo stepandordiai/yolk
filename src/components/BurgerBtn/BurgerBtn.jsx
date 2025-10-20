@@ -1,117 +1,102 @@
 import { NavLink } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import "./BurgerBtn.scss";
 
 const BurgerBtn = () => {
+	const [isMenuActive, setIsMenuActive] = useState(false);
+
+	const openMenu = () => setIsMenuActive(true);
+	const closeMenu = () => setIsMenuActive(false);
+
 	useEffect(() => {
-		document.querySelector(".burger").addEventListener("mouseenter", () => {
-			document
-				.querySelector(".burger-menu-wrapper")
-				.classList.add("burger-menu-wrapper--active");
-			document.querySelector(".burger-9").classList.add("burger-9--active");
-			document
-				.querySelector(".burger-9__center-line")
-				.classList.add("burger-9__center-line--active");
-		});
-		document.querySelector(".burger").addEventListener("mouseleave", () => {
-			document
-				.querySelector(".burger-menu-wrapper")
-				.classList.remove("burger-menu-wrapper--active");
-			document.querySelector(".burger-9").classList.remove("burger-9--active");
-			document
-				.querySelector(".burger-9__center-line")
-				.classList.remove("burger-9__center-line--active");
-		});
+		document.addEventListener("scroll", closeMenu);
 
-		// Mobile
-		document.querySelector(".burger").addEventListener("touchstart", () => {
-			document
-				.querySelector(".burger-menu-wrapper")
-				.classList.add("burger-menu-wrapper--active");
-			document.querySelector(".burger-9").classList.add("burger-9--active");
-			document
-				.querySelector(".burger-9__center-line")
-				.classList.add("burger-9__center-line--active");
-		});
-
-		document.querySelectorAll(".burger-menu-nav__link").forEach((link) => {
-			link.addEventListener("click", () => {
-				document
-					.querySelector(".burger-menu-wrapper")
-					.classList.remove("burger-menu-wrapper--active");
-				document
-					.querySelector(".burger-9")
-					.classList.remove("burger-9--active");
-				document
-					.querySelector(".burger-9__center-line")
-					.classList.remove("burger-9__center-line--active");
-			});
-		});
-
-		document.addEventListener("scroll", () => {
-			document
-				.querySelector(".burger-menu-wrapper")
-				.classList.remove("burger-menu-wrapper--active");
-			document.querySelector(".burger-9").classList.remove("burger-9--active");
-			document
-				.querySelector(".burger-9__center-line")
-				.classList.remove("burger-9__center-line--active");
-		});
+		return () => document.removeEventListener("scroll", closeMenu);
 	}, []);
 
-	const inactiveMenuLink = "burger-menu-nav__link";
-	const activeMenuLink = "burger-menu-nav__link burger-menu-nav__link--active";
-
 	return (
-		<div className="burger">
-			<button className="burger-9">
-				<span className="burger-9__center-line"></span>
+		<div
+			onMouseEnter={openMenu}
+			onMouseLeave={closeMenu}
+			onTouchStart={openMenu}
+			className="burger"
+		>
+			<button
+				className={`burger-btn ${isMenuActive ? "burger-btn--active" : ""}`}
+			>
+				<span
+					className={`burger-btn__center-line ${
+						isMenuActive ? "burger-btn__center-line--active" : ""
+					}`}
+				></span>
 			</button>
-			<div className="burger-menu-wrapper">
+			<div
+				className={`burger-menu-wrapper ${
+					isMenuActive ? "burger-menu-wrapper--active" : ""
+				}`}
+			>
 				<div className="burger-menu-nav">
 					<NavLink
+						onClick={() => setIsMenuActive(false)}
 						className={({ isActive }) =>
-							isActive ? activeMenuLink : inactiveMenuLink
+							`burger-menu-nav__link ${
+								isActive ? "burger-menu-nav__link--active" : ""
+							}`
 						}
 						to="/"
 					>
 						Home
 					</NavLink>
 					<NavLink
+						onClick={() => setIsMenuActive(false)}
 						className={({ isActive }) =>
-							isActive ? activeMenuLink : inactiveMenuLink
+							`burger-menu-nav__link ${
+								isActive ? "burger-menu-nav__link--active" : ""
+							}`
 						}
 						to="/about"
 					>
 						About
 					</NavLink>
 					<NavLink
+						onClick={() => setIsMenuActive(false)}
 						className={({ isActive }) =>
-							isActive ? activeMenuLink : inactiveMenuLink
+							`burger-menu-nav__link ${
+								isActive ? "burger-menu-nav__link--active" : ""
+							}`
 						}
 						to="/menu"
 					>
 						Menu
 					</NavLink>
 					<NavLink
+						onClick={() => setIsMenuActive(false)}
 						className={({ isActive }) =>
-							isActive ? activeMenuLink : inactiveMenuLink
+							`burger-menu-nav__link ${
+								isActive ? "burger-menu-nav__link--active" : ""
+							}`
 						}
 						to="/shop"
 					>
 						Shop
 					</NavLink>
 					<NavLink
+						onClick={() => setIsMenuActive(false)}
 						className={({ isActive }) =>
-							isActive ? activeMenuLink : inactiveMenuLink
+							`burger-menu-nav__link ${
+								isActive ? "burger-menu-nav__link--active" : ""
+							}`
 						}
 						to="/blog"
 					>
 						Blog
 					</NavLink>
 					<NavLink
+						onClick={() => setIsMenuActive(false)}
 						className={({ isActive }) =>
-							isActive ? activeMenuLink : inactiveMenuLink
+							`burger-menu-nav__link ${
+								isActive ? "burger-menu-nav__link--active" : ""
+							}`
 						}
 						to="/contact"
 					>

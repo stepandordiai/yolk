@@ -17,13 +17,27 @@ import "./scss/App.scss";
 
 function App() {
 	const [cart, setCart] = useState([]);
+	const [showBookATable, setShowBookATable] = useState(false);
+	const [isCartActive, setIsCartActive] = useState(false);
 
 	return (
 		<>
 			<Preload />
-			<Header cart={cart} />
-			<BookATable />
-			<Cart cart={cart} setCart={setCart} />
+			<Header
+				cart={cart}
+				setShowBookATable={setShowBookATable}
+				setIsCartActive={setIsCartActive}
+			/>
+			<BookATable
+				showBookATable={showBookATable}
+				setShowBookATable={setShowBookATable}
+			/>
+			<Cart
+				cart={cart}
+				setCart={setCart}
+				isCartActive={isCartActive}
+				setIsCartActive={setIsCartActive}
+			/>
 			<Routes>
 				<Route path="/" element={<Home />} />
 				<Route path="/about" element={<About />} />
@@ -33,10 +47,16 @@ function App() {
 				<Route path="/contact" element={<Contact />} />
 				<Route
 					path="/gift-card-page/:id"
-					element={<GiftCardPage setCart={setCart} cart={cart} />}
+					element={
+						<GiftCardPage
+							setCart={setCart}
+							cart={cart}
+							setIsCartActive={setIsCartActive}
+						/>
+					}
 				/>
 			</Routes>
-			<Footer />
+			<Footer setShowBookATable={setShowBookATable} />
 			<ScrollToTop />
 		</>
 	);

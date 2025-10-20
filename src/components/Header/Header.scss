@@ -17,7 +17,7 @@
 	transition: transform 0.3s;
 }
 
-.header--active {
+.header--hide {
 	transform: translate(-50%, calc(100% + 10px));
 }
 

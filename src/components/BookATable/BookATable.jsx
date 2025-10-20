@@ -1,7 +1,7 @@
 import dayjs from "dayjs";
 import "./BookATable.scss";
 
-const BookATable = () => {
+const BookATable = ({ showBookATable, setShowBookATable }) => {
 	// dayjs external library
 	const date = dayjs();
 	const formatDate = date.format("YYYY-MM-DD");
@@ -10,14 +10,13 @@ const BookATable = () => {
 	const minutes = date.minute();
 	const formatMinutes = minutes < 10 ? "0" + minutes : minutes;
 
-	const closeBookATable = () => {
-		document.querySelector(".book-a-table").style.display = "none";
-	};
-
 	return (
-		<div className="book-a-table">
+		<div
+			className="book-a-table"
+			style={showBookATable ? { display: "flex" } : { display: "none" }}
+		>
 			<div className="book-a-table__header">
-				<button onClick={closeBookATable}>Close</button>
+				<button onClick={() => setShowBookATable(false)}>Close</button>
 				<p className="book-a-table__title">Book a Table</p>
 			</div>
 			<form

@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 import { useState } from "react";
 import "./GiftCardPage.scss";
 
-const GiftCardPage = ({ setCart, cart }) => {
+const GiftCardPage = ({ setCart, cart, setIsCartActive }) => {
 	const { id } = useParams();
 
 	const [qty, setQty] = useState(1);
@@ -48,23 +48,8 @@ const GiftCardPage = ({ setCart, cart }) => {
 
 		setTimeout(() => {
 			element.remove();
-			showCart();
+			setIsCartActive(true);
 		}, 3000);
-	};
-
-	const showCart = () => {
-		const cart = document.querySelector(".cart");
-		// if (!cart.classList.contains("cart--active")) {
-		cart.classList.add("cart--active");
-		document
-			.querySelector(".cart__curtain")
-			.classList.add("cart__curtain--active");
-		// } else {
-		// cart.classList.remove("cart--active");
-		// document
-		// .querySelector(".cart__curtain")
-		// .classList.remove("cart__curtain--active");
-		// }
 	};
 
 	const giftCard = giftCardsData.find((giftCard) => giftCard.id == id);
@@ -126,7 +111,7 @@ const GiftCardPage = ({ setCart, cart }) => {
 				) : (
 					<button
 						className="gift-card-page__add-to-cart-btn"
-						onClick={showCart}
+						onClick={() => setIsCartActive(true)}
 					>
 						In Cart
 					</button>

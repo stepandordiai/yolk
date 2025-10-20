@@ -1,13 +1,6 @@
 import "./Cart.scss";
 
-const Cart = ({ cart, setCart }) => {
-	const hideCart = () => {
-		document.querySelector(".cart").classList.remove("cart--active");
-		document
-			.querySelector(".cart__curtain")
-			.classList.remove("cart__curtain--active");
-	};
-
+const Cart = ({ cart, setCart, isCartActive, setIsCartActive }) => {
 	const decreaseQty = (cartItem) => {
 		setCart((prevItem) => {
 			return prevItem.map((chosenItem) => {
@@ -69,9 +62,12 @@ const Cart = ({ cart, setCart }) => {
 
 	return (
 		<>
-			<div className="cart">
+			<div className={`cart ${isCartActive ? "cart--active" : ""}`}>
 				<div>
-					<button className="cart__close-btn" onClick={hideCart}>
+					<button
+						className="cart__close-btn"
+						onClick={() => setIsCartActive(false)}
+					>
 						Close
 					</button>
 					<p className="cart__title">Cart</p>
@@ -130,7 +126,12 @@ const Cart = ({ cart, setCart }) => {
 					</button>
 				</div>
 			</div>
-			<div onClick={hideCart} className="cart__curtain"></div>
+			<div
+				onClick={() => setIsCartActive(false)}
+				className={`cart__curtain ${
+					isCartActive ? "cart__curtain--active" : ""
+				}`}
+			></div>
 		</>
 	);
 };
