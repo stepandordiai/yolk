@@ -1,12 +1,43 @@
 import { NavLink } from "react-router-dom";
-import logo from "/logo-black.png";
 import { useEffect } from "react";
+import BurgerBtn from "../BurgerBtn/BurgerBtn";
 import workingHoursIcon from "/icons/working-hours.png";
 import shoppingCartIcon from "/icons/shopping-cart.png";
+import logo from "/logo-black.png";
 import "./Header.scss";
-import BurgerBtn from "../BurgerBtn/BurgerBtn";
 
 const Header = ({ cart }) => {
+	const workingHoursData = [
+		{
+			name: "Monday",
+			hours: "10am - 5pm",
+		},
+		{
+			name: "Tuesday",
+			hours: "10am - 5pm",
+		},
+		{
+			name: "Wednesday",
+			hours: "10am - 5pm",
+		},
+		{
+			name: "Thursday",
+			hours: "10am - 5pm",
+		},
+		{
+			name: "Friday",
+			hours: "10am - 5pm",
+		},
+		{
+			name: "Saturday",
+			hours: "Closed",
+		},
+		{
+			name: "Sunday",
+			hours: "Closed",
+		},
+	];
+
 	useEffect(() => {
 		const header = document.querySelector(".header");
 
@@ -107,34 +138,14 @@ const Header = ({ cart }) => {
 						<div className="header__working-hours-container">
 							<p className="working-hours-title">Working Hours</p>
 							<ul className="working-hours-list">
-								<li>
-									<span>Monday</span>
-									<span>10am - 5pm</span>
-								</li>
-								<li>
-									<span>Tuesday</span>
-									<span>10am - 5pm</span>
-								</li>
-								<li>
-									<span>Wednesday</span>
-									<span>10am - 5pm</span>
-								</li>
-								<li>
-									<span>Thursday</span>
-									<span>10am - 5pm</span>
-								</li>
-								<li>
-									<span>Friday</span>
-									<span>10am - 5pm</span>
-								</li>
-								<li>
-									<span>Saturday</span>
-									<span>Closed</span>
-								</li>
-								<li>
-									<span>Sunday</span>
-									<span>Closed</span>
-								</li>
+								{workingHoursData.map((day) => {
+									return (
+										<li>
+											<span>{day.name}</span>
+											<span>{day.hours}</span>
+										</li>
+									);
+								})}
 							</ul>
 						</div>
 						<div className="gap"></div>
