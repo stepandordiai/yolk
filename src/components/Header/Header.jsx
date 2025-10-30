@@ -1,62 +1,61 @@
-import { NavLink } from "react-router-dom";
 import { useEffect, useState } from "react";
+import linksData from "./../../assets/data/links-data.json";
+import { NavLink } from "react-router-dom";
 import BurgerBtn from "../BurgerBtn/BurgerBtn";
 import workingHoursIcon from "/icons/working-hours.png";
 import shoppingCartIcon from "/icons/shopping-cart.png";
 import logo from "/logo-black.png";
 import "./Header.scss";
 
-const Header = ({ cart, setShowBookATable, setIsCartActive }) => {
-	const workingHoursData = [
-		{
-			name: "Monday",
-			hours: "10am - 5pm",
-		},
-		{
-			name: "Tuesday",
-			hours: "10am - 5pm",
-		},
-		{
-			name: "Wednesday",
-			hours: "10am - 5pm",
-		},
-		{
-			name: "Thursday",
-			hours: "10am - 5pm",
-		},
-		{
-			name: "Friday",
-			hours: "10am - 5pm",
-		},
-		{
-			name: "Saturday",
-			hours: "Closed",
-		},
-		{
-			name: "Sunday",
-			hours: "Closed",
-		},
-	];
+const workingHoursData = [
+	{
+		name: "Monday",
+		hours: "10am - 5pm",
+	},
+	{
+		name: "Tuesday",
+		hours: "10am - 5pm",
+	},
+	{
+		name: "Wednesday",
+		hours: "10am - 5pm",
+	},
+	{
+		name: "Thursday",
+		hours: "10am - 5pm",
+	},
+	{
+		name: "Friday",
+		hours: "10am - 5pm",
+	},
+	{
+		name: "Saturday",
+		hours: "Closed",
+	},
+	{
+		name: "Sunday",
+		hours: "Closed",
+	},
+];
 
+const Header = ({ cart, toggleBookATableBtn, setIsCartActive }) => {
 	const [headerHide, setHeaderHide] = useState(false);
 
 	useEffect(() => {
-		let prevScroll = 0;
+		let prevScrollTop = 0;
 		const handleHeaderOnScroll = () => {
 			const scrollTop = document.documentElement.scrollTop;
-			if (scrollTop > prevScroll) {
+			if (scrollTop > prevScrollTop) {
 				setHeaderHide(true);
 			} else {
 				setHeaderHide(false);
 			}
-			prevScroll = scrollTop;
+			prevScrollTop = scrollTop;
 		};
 
 		document.addEventListener("scroll", handleHeaderOnScroll);
 
-		return () => {
-			document.removeEventListener("scroll", handleHeaderOnScroll);
-		};
+		return () => document.removeEventListener("scroll", handleHeaderOnScroll);
 	}, []);
 
 	return (
@@ -68,54 +67,19 @@ const Header = ({ cart, setShowBookATable, setIsCartActive }) => {
 			</NavLink>
 			<BurgerBtn />
 			<nav className="header__nav">
-				<NavLink
-					className={({ isActive }) =>
-						`header__nav-link ${isActive ? "header__nav-link--active" : ""}`
-					}
-					to="/"
-				>
-					Home
-				</NavLink>
-				<NavLink
-					className={({ isActive }) =>
-						`header__nav-link ${isActive ? "header__nav-link--active" : ""}`
-					}
-					to="/about"
-				>
-					About
-				</NavLink>
-				<NavLink
-					className={({ isActive }) =>
-						`header__nav-link ${isActive ? "header__nav-link--active" : ""}`
-					}
-					to="/menu"
-				>
-					Menu
-				</NavLink>
-				<NavLink
-					className={({ isActive }) =>
-						`header__nav-link ${isActive ? "header__nav-link--active" : ""}`
-					}
-					to="/shop"
-				>
-					Shop
-				</NavLink>
-				<NavLink
-					className={({ isActive }) =>
-						`header__nav-link ${isActive ? "header__nav-link--active" : ""}`
-					}
-					to="/blog"
-				>
-					Blog
-				</NavLink>
-				<NavLink
-					className={({ isActive }) =>
-						`header__nav-link ${isActive ? "header__nav-link--active" : ""}`
-					}
-					to="/contact"
-				>
-					Contact
-				</NavLink>
+				{linksData.map((link) => {
+					return (
+						<NavLink
+							key={link.id}
+							className={({ isActive }) =>
+								`header__nav-link ${isActive ? "header__nav-link--active" : ""}`
+							}
+							to={link.path}
+						>
+							{link.name}
+						</NavLink>
+					);
+				})}
 			</nav>
 			<button onClick={() => setIsCartActive(true)} className="header__cart">
 				<img src={shoppingCartIcon} width={20} height={20} alt="" />
@@ -140,7 +104,7 @@ const Header = ({ cart, setShowBookATable, setIsCartActive }) => {
 					<div className="gap"></div>
 				</div>
 			</div>
-			<button onClick={() => setShowBookATable(true)} className="header__btn">
+			<button onClick={toggleBookATableBtn} className="header__btn">
 				<div>
 					<p>Book a table</p>
 					<p>Book a table</p>

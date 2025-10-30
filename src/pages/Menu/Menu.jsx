@@ -4,7 +4,10 @@ import menuData from "./../../assets/data/menu-data.json";
 import PageTop from "../../components/PageTop/PageTop";
 import "./Menu.scss";
 
+const uniqueMenuTypes = [...new Set(menuData.map((product) => product.type))];
+
 const Menu = () => {
+	// FIXME:
 	useEffect(() => {
 		const nav = document.querySelectorAll(".menu__nav-link");
 		const menuNav = document.querySelector(".menu__nav");
@@ -24,7 +27,6 @@ const Menu = () => {
 			});
 		});
 
-		// TODO:
 		let lastActiveIndex = -1;
 		document.addEventListener("scroll", () => {
 			menuInner.forEach((el, index) => {
@@ -54,139 +56,51 @@ const Menu = () => {
 				<title>Menu / Yolk</title>
 			</Helmet>
 			<main className="menu">
-				<PageTop title={"Menu"} />
+				<PageTop title="Menu" />
 				<nav className="menu__nav">
-					<a className="menu__nav-link" href="#starters">
-						Starters
-					</a>
-					<a className="menu__nav-link" href="#lunch">
-						Lunch
-					</a>
-					<a className="menu__nav-link" href="#dinner">
-						Dinner
-					</a>
-					<a className="menu__nav-link" href="#drinks">
-						Drinks
-					</a>
+					{uniqueMenuTypes.map((type) => {
+						return (
+							<a className="menu__nav-link" href={`#${type}`}>
+								{type[0].toUpperCase() + type.slice(1)}
+							</a>
+						);
+					})}
 				</nav>
-				<div className="menu__inner">
-					<p className="menu__inner-title" id="starters">
-						Starters
-					</p>
-					{menuData
-						.filter((item) => item.type === "starters")
-						.map((item) => {
-							return (
-								<div
-									key={item.id}
-									className={`menu__item ${
-										item.special && "menu__item-special"
-									}`}
-									data-special-value={item.special}
-								>
-									<div className="menu__item-img-wrapper">
-										<img src={item.img} alt="" loading="lazy" />
-									</div>
-									<div className="menu__item-info">
-										<div className="menu__item-info-top">
-											<p>{item.name}</p>
-											<p>$ {(item.priceCents / 100).toFixed(2)}</p>
+				{uniqueMenuTypes.map((type) => {
+					return (
+						<div className="menu__inner">
+							<p className="menu__inner-title" id={type}>
+								{type[0].toUpperCase() + type.slice(1)}
+							</p>
+							{menuData
+								.filter((item) => item.type === type)
+								.map((item) => {
+									return (
+										<div
+											key={item.id}
+											className={`menu__item ${
+												item.special ? "menu__item--special" : ""
+											}`}
+											data-special-value="Starter of the Day"
+										>
+											<div className="menu__item-img-wrapper">
+												<img src={item.img} alt="" loading="lazy" />
+											</div>
+											<div className="menu__item-info">
+												<div className="menu__item-info-top">
+													<p>{item.name}</p>
+													<p>$ {(item.priceCents / 100).toFixed(2)}</p>
+												</div>
+												<p className="menu__item-info-bottom">
+													Lorem ipsum dolor sit amet, consectetur
+												</p>
+											</div>
 										</div>
-										<p className="menu__item-info-bottom">
-											Lorem ipsum dolor sit amet, consectetur
-										</p>
-									</div>
-								</div>
-							);
-						})}
-				</div>
-				<div className="menu__inner">
-					<p className="menu__inner-title" id="lunch">
-						Lunch
-					</p>
-					{menuData
-						.filter((item) => item.type === "breakfast")
-						.map((item) => {
-							return (
-								<div
-									key={item.id}
-									className="menu__item"
-									data-special-value="Starter of the Day"
-								>
-									<div className="menu__item-img-wrapper">
-										<img src={item.img} alt="" loading="lazy" />
-									</div>
-									<div className="menu__item-info">
-										<div className="menu__item-info-top">
-											<p>{item.name}</p>
-											<p>$ {(item.priceCents / 100).toFixed(2)}</p>
-										</div>
-										<p className="menu__item-info-bottom">
-											Lorem ipsum dolor sit amet, consectetur
-										</p>
-									</div>
-								</div>
-							);
-						})}
-				</div>
-				<div className="menu__inner">
-					<p className="menu__inner-title" id="dinner">
-						Dinner
-					</p>
-					{menuData
-						.filter((item) => item.type === "dinner")
-						.map((item) => {
-							return (
-								<div
-									key={item.id}
-									className="menu__item"
-									data-special-value="Starter of the Day"
-								>
-									<div className="menu__item-img-wrapper">
-										<img src={item.img} alt="" loading="lazy" />
-									</div>
-									<div className="menu__item-info">
-										<div className="menu__item-info-top">
-											<p>{item.name}</p>
-											<p>$ {(item.priceCents / 100).toFixed(2)}</p>
-										</div>
-										<p className="menu__item-info-bottom">
-											Lorem ipsum dolor sit amet, consectetur
-										</p>
-									</div>
-								</div>
-							);
-						})}
-				</div>
-				<div className="menu__inner">
-					<p className="menu__inner-title" id="drinks">
-						Drinks
-					</p>
-					{menuData
-						.filter((item) => item.type === "drinks")
-						.map((item) => {
-							return (
-								<div
-									key={item.id}
-									className="menu__item"
-									data-special-value="Starter of the Day"
-								>
-									<div className="menu__item-img-wrapper">
-										<img src={item.img} alt="" loading="lazy" />
-									</div>
-									<div className="menu__item-info">
-										<div className="menu__item-info-top">
-											<p>{item.name}</p>
-											<p>$ {(item.priceCents / 100).toFixed(2)}</p>
-										</div>
-										<p className="menu__item-info-bottom">
-											Lorem ipsum dolor sit amet, consectetur
-										</p>
-									</div>
-								</div>
-							);
-						})}
-				</div>
+									);
+								})}
+						</div>
+					);
+				})}
 			</main>
 		</>
 	);

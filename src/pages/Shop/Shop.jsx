@@ -1,6 +1,6 @@
 import PageTop from "../../components/PageTop/PageTop";
-import giftCardsData from "./../../assets/data/gift-cards-data.json";
 import { NavLink } from "react-router-dom";
+import giftCardsData from "./../../assets/data/gift-cards-data.json";
 import "./Shop.scss";
 
 const Shop = () => {

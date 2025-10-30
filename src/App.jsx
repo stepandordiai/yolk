@@ -20,12 +20,15 @@ function App() {
 	const [showBookATable, setShowBookATable] = useState(false);
 	const [isCartActive, setIsCartActive] = useState(false);
 
+	const toggleBookATableBtn = () => setShowBookATable((prev) => !prev);
+
 	return (
 		<>
+			<ScrollToTop />
 			<Preload />
 			<Header
 				cart={cart}
-				setShowBookATable={setShowBookATable}
+				toggleBookATableBtn={toggleBookATableBtn}
 				setIsCartActive={setIsCartActive}
 			/>
 			<BookATable
@@ -56,8 +59,7 @@ function App() {
 					}
 				/>
 			</Routes>
-			<Footer setShowBookATable={setShowBookATable} />
-			<ScrollToTop />
+			<Footer toggleBookATableBtn={toggleBookATableBtn} />
 		</>
 	);
 }

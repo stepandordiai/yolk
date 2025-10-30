@@ -7,21 +7,14 @@ import "./GiftCardPage.scss";
 const GiftCardPage = ({ setCart, cart, setIsCartActive }) => {
 	const { id } = useParams();
 
+	const giftCard = giftCardsData.find((giftCard) => giftCard.id == id);
+
 	const [qty, setQty] = useState(1);
 
+	// FIXME:
 	const addToCart = (item, qty) => {
 		setCart((prevCart) => {
-			// const existingItem = prevCart.find((cartItem) => cartItem.id === item.id);
-
-			// if (existingItem) {
-			// 	return prevCart.map((cartItem) =>
-			// 		cartItem.id === item.id
-			// 			? { ...cartItem, itemQty: cartItem.itemQty + qty }
-			// 			: item
-			// 	);
-			// } else {
 			return [...prevCart, { ...item, itemQty: qty }];
-			// }
 		});
 
 		const element = document.createElement("div");
@@ -52,72 +45,67 @@ const GiftCardPage = ({ setCart, cart, setIsCartActive }) => {
 		}, 3000);
 	};
 
-	const giftCard = giftCardsData.find((giftCard) => giftCard.id == id);
-
-	// FIXME: method some() is more efficient here and return boolean and not data
 	const itemIsInCart = cart.some((cartItem) => cartItem.id == giftCard.id);
 
 	return (
-		<>
-			<main className="gift-card-page">
-				<NavLink className="gift-card-page__link" to="/shop">
-					Back to Shop
-				</NavLink>
-				<h1 className="gift-card-page__title">{giftCard.name}</h1>
-				<div className="gift-card-page__img-container">
-					<img src={giftCard.img} alt="" />
-				</div>
+		<main className="gift-card-page">
+			<NavLink className="gift-card-page__link" to="/shop">
+				Back to Shop
+			</NavLink>
+			<h1 className="gift-card-page__title">{giftCard.name}</h1>
+			<div className="gift-card-page__img-container">
+				<img src={giftCard.img} alt="" />
+			</div>
+			<div
+				style={{
+					display: "flex",
+					justifyContent: "space-between",
+				}}
+			>
+				<p style={{ fontSize: "1.5rem" }}>
+					$ {(giftCard.priceCents / 100).toFixed(2)}
+				</p>
 				<div
 					style={{
 						display: "flex",
-						justifyContent: "space-between",
+						justifyContent: "center",
+						alignItems: "center",
+						gap: 5,
 					}}
 				>
-					<p style={{ fontSize: "1.5rem" }}>
-						$ {(giftCard.priceCents / 100).toFixed(2)}
-					</p>
-					<div
-						style={{
-							display: "flex",
-							justifyContent: "center",
-							alignItems: "center",
-							gap: 5,
-						}}
+					<button
+						onClick={() => setQty(Math.max(qty - 1, 1))}
+						className="qty-btn"
+						disabled={qty === 1}
 					>
-						<button
-							onClick={() => setQty(Math.max(qty - 1, 1))}
-							className="qty-btn"
-							disabled={qty === 1}
-						>
-							-
-						</button>
-						<p className="qty-txt">{qty}</p>
-						<button
-							onClick={() => setQty(Math.min(qty + 1, 10))}
-							className="qty-btn"
-							disabled={qty === 10}
-						>
-							+
-						</button>
-					</div>
+						-
+					</button>
+					<p className="qty-txt">{qty}</p>
+					<button
+						onClick={() => setQty(Math.min(qty + 1, 10))}
+						className="qty-btn"
+						disabled={qty === 10}
+					>
+						+
+					</button>
 				</div>
-				{!itemIsInCart ? (
-					<button
-						className="gift-card-page__add-to-cart-btn"
-						onClick={() => addToCart(giftCard, Number(qty))}
-					>
-						Add to Cart
-					</button>
-				) : (
-					<button
-						className="gift-card-page__add-to-cart-btn"
-						onClick={() => setIsCartActive(true)}
-					>
-						In Cart
-					</button>
-				)}
-			</main>
-		</>
+			</div>
+			{!itemIsInCart ? (
+				<button
+					className="gift-card-page__add-to-cart-btn"
+					onClick={() => addToCart(giftCard, Number(qty))}
+				>
+					Add to Cart
+				</button>
+			) : (
+				<button
+					className="gift-card-page__add-to-cart-btn"
+					onClick={() => setIsCartActive(true)}
+				>
+					In Cart
+				</button>
+			)}
+		</main>
 	);
 };
 

@@ -1,11 +1,9 @@
+import linksData from "./../../assets/data/links-data.json";
 import { NavLink } from "react-router-dom";
 import logoWhite from "/logo-white.png";
 import "./Footer.scss";
 
-const Footer = ({ setShowBookATable }) => {
-	const inactiveFooterNavLink = "footer__nav-link";
-	const activeFooterNavLink = "footer__nav-link footer__nav-link--active";
-
+const Footer = ({ toggleBookATableBtn }) => {
 	return (
 		<footer className="footer">
 			<div className="footer__container">
@@ -25,61 +23,25 @@ const Footer = ({ setShowBookATable }) => {
 				<div>
 					<p style={{ marginBottom: 20 }}>Pages</p>
 					<nav className="footer__nav">
-						<NavLink
-							className={({ isActive }) =>
-								isActive ? activeFooterNavLink : inactiveFooterNavLink
-							}
-							to="/"
-						>
-							Home
-						</NavLink>
-						<NavLink
-							className={({ isActive }) =>
-								isActive ? activeFooterNavLink : inactiveFooterNavLink
-							}
-							to="/about"
-						>
-							About
-						</NavLink>
-						<NavLink
-							className={({ isActive }) =>
-								isActive ? activeFooterNavLink : inactiveFooterNavLink
-							}
-							to="/menu"
-						>
-							Menu
-						</NavLink>
-						<NavLink
-							className={({ isActive }) =>
-								isActive ? activeFooterNavLink : inactiveFooterNavLink
-							}
-							to="/shop"
-						>
-							Shop
-						</NavLink>
-						<NavLink
-							className={({ isActive }) =>
-								isActive ? activeFooterNavLink : inactiveFooterNavLink
-							}
-							to="/blog"
-						>
-							Blog
-						</NavLink>
-						<NavLink
-							className={({ isActive }) =>
-								isActive ? activeFooterNavLink : inactiveFooterNavLink
-							}
-							to="/contact"
-						>
-							Contact
-						</NavLink>
+						{linksData.map((link) => {
+							return (
+								<NavLink
+									key={link.id}
+									className={({ isActive }) =>
+										`footer__nav-link ${
+											isActive ? "footer__nav-link--active" : ""
+										}`
+									}
+									to={link.path}
+								>
+									{link.name}
+								</NavLink>
+							);
+						})}
 					</nav>
 				</div>
 				<div>
-					<button
-						onClick={() => setShowBookATable(true)}
-						className="footer__btn"
-					>
+					<button onClick={toggleBookATableBtn} className="footer__btn">
 						Book a Table
 					</button>
 				</div>

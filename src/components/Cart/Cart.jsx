@@ -1,23 +1,21 @@
 import "./Cart.scss";
 
 const Cart = ({ cart, setCart, isCartActive, setIsCartActive }) => {
-	const decreaseQty = (cartItem) => {
+	const decreaseItemQty = (cartItem) => {
 		setCart((prevItem) => {
 			return prevItem.map((chosenItem) => {
-				return chosenItem.id == cartItem.id
-					? // Math.max prevents qty less than 1
-					  { ...chosenItem, itemQty: Math.max(cartItem.itemQty - 1, 1) }
+				return chosenItem.id === cartItem.id
+					? { ...chosenItem, itemQty: Math.max(cartItem.itemQty - 1, 1) }
 					: chosenItem;
 			});
 		});
 	};
 
-	const increaseQty = (cartItem) => {
+	const increaseItemQty = (cartItem) => {
 		setCart((prevItem) => {
 			return prevItem.map((chosenItem) => {
-				return chosenItem.id == cartItem.id
-					? // Math.min prevents qty more than 10
-					  { ...chosenItem, itemQty: Math.min(cartItem.itemQty + 1, 10) }
+				return chosenItem.id === cartItem.id
+					? { ...chosenItem, itemQty: Math.min(cartItem.itemQty + 1, 10) }
 					: chosenItem;
 			});
 		});
@@ -29,11 +27,12 @@ const Cart = ({ cart, setCart, isCartActive, setIsCartActive }) => {
 		});
 	};
 
-	const totalCartAmount = cart.reduce(
-		(accumulator, item) => accumulator + item.itemQty * item.priceCents,
+	const totalCartPrice = cart.reduce(
+		(acc, item) => acc + item.itemQty * item.priceCents,
 		0
 	);
 
+	// FIXME:
 	let isActive = false;
 	const handleDisabledCheckout = () => {
 		if (isActive) return;
@@ -73,7 +72,7 @@ const Cart = ({ cart, setCart, isCartActive, setIsCartActive }) => {
 					<p className="cart__title">Cart</p>
 				</div>
 				<div className="cart__items">
-					{cart.length > 0 && (
+					{cart.length > 0 ? (
 						<>
 							{cart.map((cartItem) => {
 								return (
@@ -89,7 +88,7 @@ const Cart = ({ cart, setCart, isCartActive, setIsCartActive }) => {
 											<div className="cart__item-counter">
 												<button
 													className="qty-btn"
-													onClick={() => decreaseQty(cartItem)}
+													onClick={() => decreaseItemQty(cartItem)}
 													disabled={cartItem.itemQty === 1}
 												>
 													-
@@ -97,7 +96,7 @@ const Cart = ({ cart, setCart, isCartActive, setIsCartActive }) => {
 												<p className="qty-txt">{cartItem.itemQty}</p>
 												<button
 													className="qty-btn"
-													onClick={() => increaseQty(cartItem)}
+													onClick={() => increaseItemQty(cartItem)}
 													disabled={cartItem.itemQty === 10}
 												>
 													<span>+</span>
@@ -114,12 +113,14 @@ const Cart = ({ cart, setCart, isCartActive, setIsCartActive }) => {
 								);
 							})}
 						</>
+					) : (
+						<div>Cart is empty</div>
 					)}
 				</div>
 				<div className="cart__footer">
 					<div>
 						<p>Total</p>
-						<p>$ {(totalCartAmount / 100).toFixed(2)}</p>
+						<p>$ {(totalCartPrice / 100).toFixed(2)}</p>
 					</div>
 					<button onClick={handleDisabledCheckout} className="checkout-btn">
 						Checkout

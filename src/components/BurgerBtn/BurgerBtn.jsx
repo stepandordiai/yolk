@@ -1,5 +1,6 @@
-import { NavLink } from "react-router-dom";
 import { useEffect, useState } from "react";
+import linksData from "./../../assets/data/links-data.json";
+import { NavLink } from "react-router-dom";
 import "./BurgerBtn.scss";
 
 const BurgerBtn = () => {
@@ -36,72 +37,22 @@ const BurgerBtn = () => {
 				}`}
 			>
 				<div className="burger-menu-nav">
-					<NavLink
-						onClick={() => setIsMenuActive(false)}
-						className={({ isActive }) =>
-							`burger-menu-nav__link ${
-								isActive ? "burger-menu-nav__link--active" : ""
-							}`
-						}
-						to="/"
-					>
-						Home
-					</NavLink>
-					<NavLink
-						onClick={() => setIsMenuActive(false)}
-						className={({ isActive }) =>
-							`burger-menu-nav__link ${
-								isActive ? "burger-menu-nav__link--active" : ""
-							}`
-						}
-						to="/about"
-					>
-						About
-					</NavLink>
-					<NavLink
-						onClick={() => setIsMenuActive(false)}
-						className={({ isActive }) =>
-							`burger-menu-nav__link ${
-								isActive ? "burger-menu-nav__link--active" : ""
-							}`
-						}
-						to="/menu"
-					>
-						Menu
-					</NavLink>
-					<NavLink
-						onClick={() => setIsMenuActive(false)}
-						className={({ isActive }) =>
-							`burger-menu-nav__link ${
-								isActive ? "burger-menu-nav__link--active" : ""
-							}`
-						}
-						to="/shop"
-					>
-						Shop
-					</NavLink>
-					<NavLink
-						onClick={() => setIsMenuActive(false)}
-						className={({ isActive }) =>
-							`burger-menu-nav__link ${
-								isActive ? "burger-menu-nav__link--active" : ""
-							}`
-						}
-						to="/blog"
-					>
-						Blog
-					</NavLink>
-					<NavLink
-						onClick={() => setIsMenuActive(false)}
-						className={({ isActive }) =>
-							`burger-menu-nav__link ${
-								isActive ? "burger-menu-nav__link--active" : ""
-							}`
-						}
-						to="/contact"
-					>
-						Contact
-					</NavLink>
+					{linksData.map((link) => {
+						return (
+							<NavLink
+								key={link.id}
+								onClick={() => setIsMenuActive(false)}
+								className={({ isActive }) =>
+									`burger-menu-nav__link ${
+										isActive ? "burger-menu-nav__link--active" : ""
+									}`
+								}
+								to={link.path}
+							>
+								{link.name}
+							</NavLink>
+						);
+					})}
 				</div>
 				<div className="gap"></div>
 			</div>
