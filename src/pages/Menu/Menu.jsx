@@ -1,5 +1,5 @@
 import { Helmet } from "react-helmet-async";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import menuData from "./../../assets/data/menu-data.json";
 import PageTop from "../../components/PageTop/PageTop";
 import "./Menu.scss";
@@ -7,6 +7,18 @@ import "./Menu.scss";
 const uniqueMenuTypes = [...new Set(menuData.map((product) => product.type))];
 
 const Menu = () => {
+	const [fullSizeImg, setFullSizeImg] = useState(false);
+	const [imgIndex, setImgIndex] = useState(0);
+
+	const showImg = (index) => {
+		setFullSizeImg(true);
+		setImgIndex(index);
+	};
+
+	const hideImg = () => {
+		setFullSizeImg(false);
+	};
+
 	// FIXME:
 	useEffect(() => {
 		const nav = document.querySelectorAll(".menu__nav-link");
@@ -72,9 +84,23 @@ const Menu = () => {
 							<p className="menu__inner-title" id={type}>
 								{type[0].toUpperCase() + type.slice(1)}
 							</p>
+							<div
+								className={`menu__full-size-img ${
+									fullSizeImg ? "menu__full-size-img--active" : ""
+								}`}
+							>
+								<img src={menuData[imgIndex].img} alt="" />
+								<button onClick={hideImg} className="close-btn">
+									close
+								</button>
+							</div>
 							{menuData
 								.filter((item) => item.type === type)
 								.map((item) => {
+									// TODO: LEARN THIS
+									const globalIndex = menuData.findIndex(
+										(i) => i.id === item.id
+									);
 									return (
 										<div
 											key={item.id}
@@ -84,7 +110,13 @@ const Menu = () => {
 											data-special-value="Starter of the Day"
 										>
 											<div className="menu__item-img-wrapper">
-												<img src={item.img} alt="" loading="lazy" />
+												<img
+													style={{ cursor: "pointer" }}
+													onClick={() => showImg(globalIndex)}
+													src={item.img}
+													alt=""
+													loading="lazy"
+												/>
 											</div>
 											<div className="menu__item-info">
 												<div className="menu__item-info-top">
