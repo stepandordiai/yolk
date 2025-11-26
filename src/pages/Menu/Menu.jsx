@@ -2,6 +2,7 @@ import { Helmet } from "react-helmet-async";
 import { useEffect, useState } from "react";
 import menuData from "./../../assets/data/menu-data.json";
 import PageTop from "../../components/PageTop/PageTop";
+import { HashLink } from "react-router-hash-link";
 import "./Menu.scss";
 
 const uniqueMenuTypes = [...new Set(menuData.map((product) => product.type))];
@@ -15,9 +16,7 @@ const Menu = () => {
 		setImgIndex(index);
 	};
 
-	const hideImg = () => {
-		setFullSizeImg(false);
-	};
+	const hideImg = () => setFullSizeImg(false);
 
 	// FIXME:
 	useEffect(() => {
@@ -67,33 +66,36 @@ const Menu = () => {
 			<Helmet>
 				<title>Menu / Yolk</title>
 			</Helmet>
+			{/* TODO: fixed element should go at the top */}
+			<div
+				className={`menu__full-size-img ${
+					fullSizeImg ? "menu__full-size-img--active" : ""
+				}`}
+			>
+				<img src={menuData[imgIndex].img} alt="" />
+				<button onClick={hideImg} className="close-btn">
+					close
+				</button>
+			</div>
 			<main className="menu">
 				<PageTop title="Menu" />
 				<nav className="menu__nav">
 					{uniqueMenuTypes.map((type) => {
 						return (
-							<a className="menu__nav-link" href={`#${type}`}>
+							<HashLink className="menu__nav-link" to={`#${type}`} smooth>
 								{type[0].toUpperCase() + type.slice(1)}
-							</a>
+							</HashLink>
 						);
 					})}
 				</nav>
+
 				{uniqueMenuTypes.map((type) => {
 					return (
 						<div className="menu__inner">
 							<p className="menu__inner-title" id={type}>
 								{type[0].toUpperCase() + type.slice(1)}
 							</p>
-							<div
-								className={`menu__full-size-img ${
-									fullSizeImg ? "menu__full-size-img--active" : ""
-								}`}
-							>
-								<img src={menuData[imgIndex].img} alt="" />
-								<button onClick={hideImg} className="close-btn">
-									close
-								</button>
-							</div>
+
 							{menuData
 								.filter((item) => item.type === type)
 								.map((item) => {
