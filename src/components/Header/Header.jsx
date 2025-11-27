@@ -42,20 +42,23 @@ const Header = ({ cart, toggleBookATableBtn, setIsCartActive }) => {
 	const [headerHide, setHeaderHide] = useState(false);
 
 	useEffect(() => {
-		let prevScrollTop = 0;
+		// TODO: LEARN THIS
+		const prevScrollY = { current: 0 };
+
 		const handleHeaderOnScroll = () => {
-			const scrollTop = document.documentElement.scrollTop;
-			if (scrollTop > prevScrollTop) {
+			// TODO: window.scrollY is better than document.documentElement.scrollTop
+			const scrollY = window.scrollY;
+			if (scrollY > prevScrollY.current) {
 				setHeaderHide(true);
 			} else {
 				setHeaderHide(false);
 			}
-			prevScrollTop = scrollTop;
+			prevScrollY.current = scrollY;
 		};
 
-		document.addEventListener("scroll", handleHeaderOnScroll);
+		window.addEventListener("scroll", handleHeaderOnScroll);
 
-		return () => document.removeEventListener("scroll", handleHeaderOnScroll);
+		return () => window.removeEventListener("scroll", handleHeaderOnScroll);
 	}, []);
 
 	return (
@@ -91,9 +94,9 @@ const Header = ({ cart, toggleBookATableBtn, setIsCartActive }) => {
 					<div className="header__working-hours-container">
 						<p className="working-hours-title">Working Hours</p>
 						<ul className="working-hours-list">
-							{workingHoursData.map((day) => {
+							{workingHoursData.map((day, i) => {
 								return (
-									<li>
+									<li key={i}>
 										<span>{day.name}</span>
 										<span>{day.hours}</span>
 									</li>

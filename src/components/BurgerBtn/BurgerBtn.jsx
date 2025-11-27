@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import linksData from "./../../assets/data/links-data.json";
 import { NavLink } from "react-router-dom";
 import "./BurgerBtn.scss";
@@ -6,24 +6,24 @@ import "./BurgerBtn.scss";
 const BurgerBtn = () => {
 	const [isMenuActive, setIsMenuActive] = useState(false);
 
-	const openMenu = () => setIsMenuActive(true);
-	const closeMenu = () => setIsMenuActive(false);
-
 	useEffect(() => {
-		document.addEventListener("scroll", closeMenu);
+		const closeMenuOnScroll = () => setIsMenuActive(false);
 
-		return () => document.removeEventListener("scroll", closeMenu);
+		window.addEventListener("scroll", closeMenuOnScroll);
+
+		return () => window.removeEventListener("scroll", closeMenuOnScroll);
 	}, []);
 
 	return (
 		<div
-			onMouseEnter={openMenu}
-			onMouseLeave={closeMenu}
-			onTouchStart={openMenu}
 			className="burger"
+			onMouseEnter={() => setIsMenuActive(true)}
+			onMouseLeave={() => setIsMenuActive(false)}
 		>
 			<button
+				onClick={() => setIsMenuActive((prev) => !prev)}
 				className={`burger-btn ${isMenuActive ? "burger-btn--active" : ""}`}
+				aria-label={isMenuActive ? "Close menu" : "Open menu"}
 			>
 				<span
 					className={`burger-btn__center-line ${
