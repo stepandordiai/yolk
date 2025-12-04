@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import menuData from "./../../assets/data/menu-data.json";
 import PageTop from "../../components/PageTop/PageTop";
 import { HashLink } from "react-router-hash-link";
+import classNames from "classnames";
 import "./Menu.scss";
 
 const uniqueMenuTypes = [...new Set(menuData.map((product) => product.type))];
@@ -68,9 +69,9 @@ const Menu = () => {
 			</Helmet>
 			{/* TODO: fixed element should go at the top */}
 			<div
-				className={`menu__full-size-img ${
-					fullSizeImg ? "menu__full-size-img--active" : ""
-				}`}
+				className={classNames("menu__full-size-img", {
+					"menu__full-size-img--active": fullSizeImg,
+				})}
 			>
 				<img src={menuData[imgIndex].img} alt="" />
 				<button onClick={hideImg} className="close-btn">
@@ -80,18 +81,22 @@ const Menu = () => {
 			<main className="menu">
 				<PageTop title="Menu" />
 				<nav className="menu__nav">
-					{uniqueMenuTypes.map((type) => {
+					{uniqueMenuTypes.map((type, i) => {
 						return (
-							<HashLink className="menu__nav-link" to={`#${type}`} smooth>
+							<HashLink
+								key={i}
+								className="menu__nav-link"
+								to={`#${type}`}
+								smooth
+							>
 								{type[0].toUpperCase() + type.slice(1)}
 							</HashLink>
 						);
 					})}
 				</nav>
-
-				{uniqueMenuTypes.map((type) => {
+				{uniqueMenuTypes.map((type, i) => {
 					return (
-						<div className="menu__inner">
+						<div key={i} className="menu__inner">
 							<p className="menu__inner-title" id={type}>
 								{type[0].toUpperCase() + type.slice(1)}
 							</p>
@@ -106,9 +111,9 @@ const Menu = () => {
 									return (
 										<div
 											key={item.id}
-											className={`menu__item ${
-												item.special ? "menu__item--special" : ""
-											}`}
+											className={classNames("menu__item", {
+												"menu__item--special": item.special,
+											})}
 											data-special-value="Starter of the Day"
 										>
 											<div className="menu__item-img-wrapper">

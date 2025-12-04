@@ -1,5 +1,6 @@
 import linksData from "./../../assets/data/links-data.json";
 import { NavLink } from "react-router-dom";
+import classNames from "classnames";
 import logoWhite from "/logo-white.png";
 import "./Footer.scss";
 
@@ -28,9 +29,9 @@ const Footer = ({ toggleBookATableBtn }) => {
 								<NavLink
 									key={link.id}
 									className={({ isActive }) =>
-										`footer__nav-link ${
-											isActive ? "footer__nav-link--active" : ""
-										}`
+										classNames("footer__nav-link", {
+											"footer__nav-link--active": isActive,
+										})
 									}
 									to={link.path}
 								>

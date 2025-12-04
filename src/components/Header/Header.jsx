@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import linksData from "./../../assets/data/links-data.json";
 import { NavLink } from "react-router-dom";
 import BurgerBtn from "../BurgerBtn/BurgerBtn";
+import classNames from "classnames";
 import workingHoursIcon from "/icons/working-hours.png";
 import shoppingCartIcon from "/icons/shopping-cart.png";
 import logo from "/logo-black.png";
@@ -62,7 +63,11 @@ const Header = ({ cart, toggleBookATableBtn, setIsCartActive }) => {
 	}, []);
 
 	return (
-		<header className={`header ${headerHide ? "header--hide" : ""}`}>
+		<header
+			className={classNames("header", {
+				"header--hide": headerHide,
+			})}
+		>
 			<NavLink className="header__logo" to="/">
 				<span>Y</span>
 				<img src={logo} width={20} alt="" />
@@ -75,7 +80,9 @@ const Header = ({ cart, toggleBookATableBtn, setIsCartActive }) => {
 						<NavLink
 							key={link.id}
 							className={({ isActive }) =>
-								`header__nav-link ${isActive ? "header__nav-link--active" : ""}`
+								classNames("header__nav-link", {
+									"header__nav-link--active": isActive,
+								})
 							}
 							to={link.path}
 						>

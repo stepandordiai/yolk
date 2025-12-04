@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import "./Cart.scss";
 
 const Cart = ({ cart, setCart, isCartActive, setIsCartActive }) => {
@@ -61,7 +62,11 @@ const Cart = ({ cart, setCart, isCartActive, setIsCartActive }) => {
 
 	return (
 		<>
-			<div className={`cart ${isCartActive ? "cart--active" : ""}`}>
+			<div
+				className={classNames("cart", {
+					"cart--active": isCartActive,
+				})}
+			>
 				<div>
 					<button
 						className="cart__close-btn"
@@ -129,9 +134,9 @@ const Cart = ({ cart, setCart, isCartActive, setIsCartActive }) => {
 			</div>
 			<div
 				onClick={() => setIsCartActive(false)}
-				className={`cart__curtain ${
-					isCartActive ? "cart__curtain--active" : ""
-				}`}
+				className={classNames("cart__curtain", {
+					"cart__curtain--active": isCartActive,
+				})}
 			></div>
 		</>
 	);
