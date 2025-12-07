@@ -43,17 +43,15 @@ const Header = ({ cart, toggleBookATableBtn, setIsCartActive }) => {
 	const [headerHide, setHeaderHide] = useState(false);
 
 	useEffect(() => {
-		// TODO: LEARN THIS
+		// TODO: learn this
 		const prevScrollY = { current: 0 };
 
 		const handleHeaderOnScroll = () => {
 			// TODO: window.scrollY is better than document.documentElement.scrollTop
 			const scrollY = window.scrollY;
-			if (scrollY > prevScrollY.current) {
-				setHeaderHide(true);
-			} else {
-				setHeaderHide(false);
-			}
+
+			setHeaderHide(scrollY > prevScrollY.current);
+
 			prevScrollY.current = scrollY;
 		};
 
@@ -70,7 +68,7 @@ const Header = ({ cart, toggleBookATableBtn, setIsCartActive }) => {
 		>
 			<NavLink className="header__logo" to="/">
 				<span>Y</span>
-				<img src={logo} width={20} alt="" />
+				<img src={logo} width={20} alt="Yolk logo" />
 				<span>lk</span>
 			</NavLink>
 			<BurgerBtn />
