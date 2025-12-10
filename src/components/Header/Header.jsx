@@ -39,7 +39,12 @@ const workingHoursData = [
 	},
 ];
 
-const Header = ({ cart, toggleBookATableBtn, setIsCartActive }) => {
+const Header = ({
+	cart,
+	toggleBookATableBtn,
+	isCartActive,
+	setIsCartActive,
+}) => {
 	const [headerHide, setHeaderHide] = useState(false);
 
 	useEffect(() => {
@@ -55,9 +60,21 @@ const Header = ({ cart, toggleBookATableBtn, setIsCartActive }) => {
 			prevScrollY.current = scrollY;
 		};
 
-		window.addEventListener("scroll", handleHeaderOnScroll);
+		// Close cart on Esc
+		const closeCartOnEsc = (e) => {
+			// TODO: learn this
+			if (e.key === "Escape") {
+				setIsCartActive(false);
+			}
+		};
 
-		return () => window.removeEventListener("scroll", handleHeaderOnScroll);
+		window.addEventListener("scroll", handleHeaderOnScroll);
+		window.addEventListener("keydown", closeCartOnEsc);
+
+		return () => {
+			window.removeEventListener("scroll", handleHeaderOnScroll);
+			window.addEventListener("keydown", closeCartOnEsc);
+		};
 	}, []);
 
 	return (
@@ -89,9 +106,20 @@ const Header = ({ cart, toggleBookATableBtn, setIsCartActive }) => {
 					);
 				})}
 			</nav>
-			<button onClick={() => setIsCartActive(true)} className="header__cart">
+			<button
+				onClick={() => setIsCartActive(true)}
+				className="header__cart"
+				aria-expanded={isCartActive}
+				// TODO: learn this
+				aria-label={
+					cart.length === 0
+						? "Cart, empty"
+						: `Cart, ${cart.length} ${cart.length === 1 ? "item" : "items"}`
+				}
+			>
 				<img src={shoppingCartIcon} width={20} height={20} alt="" />
-				<span>{cart.length}</span>
+				{/* TODO: learn this */}
+				<span aria-hidden="true">{cart.length}</span>
 			</button>
 			<div className="header__working-hours">
 				<img src={workingHoursIcon} width={20} height={20} alt="" />

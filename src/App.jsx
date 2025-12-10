@@ -29,6 +29,7 @@ function App() {
 			<Header
 				cart={cart}
 				toggleBookATableBtn={toggleBookATableBtn}
+				isCartActive={isCartActive}
 				setIsCartActive={setIsCartActive}
 			/>
 			<BookATable
