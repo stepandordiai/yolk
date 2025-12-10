@@ -68,7 +68,7 @@
 
 .burger-menu-wrapper--active {
 	opacity: 1;
-	pointer-events: all;
+	pointer-events: auto;
 }
 
 .burger-menu-nav {

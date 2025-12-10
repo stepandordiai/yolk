@@ -27,6 +27,8 @@ const BurgerBtn = () => {
 					"burger-btn--active": isMenuActive,
 				})}
 				aria-label={isMenuActive ? "Close menu" : "Open menu"}
+				aria-expanded={isMenuActive}
+				aria-controls="menu"
 			>
 				<span
 					className={classNames("burger-btn__center-line", {
@@ -34,10 +36,12 @@ const BurgerBtn = () => {
 					})}
 				></span>
 			</button>
-			<div
+			<nav
 				className={classNames("burger-menu-wrapper", {
 					"burger-menu-wrapper--active": isMenuActive,
 				})}
+				id="menu"
+				aria-hidden={!isMenuActive}
 			>
 				<div className="burger-menu-nav">
 					{linksData.map((link) => {
@@ -58,7 +62,7 @@ const BurgerBtn = () => {
 					})}
 				</div>
 				<div className="gap"></div>
-			</div>
+			</nav>
 		</div>
 	);
 };
