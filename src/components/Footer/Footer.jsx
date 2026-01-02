@@ -49,7 +49,7 @@ const Footer = ({ toggleBookATableBtn }) => {
 			</div>
 			<div className="footer__bottom">
 				<p>All rights reserved.</p>
-				<p>&copy; 2025 Yolk</p>
+				<p>&copy; 2025-{new Date().getFullYear()} Yolk</p>
 			</div>
 		</footer>
 	);
